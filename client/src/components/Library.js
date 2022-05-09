@@ -13,7 +13,7 @@ function Library(props) {
     // do things
 
     fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=intitle:${userInput}&maxResults=40&key=AIzaSyDXn2YBqBRlTeRmMo-T9VUhvH-1Ovo93Ww`
+      `https://www.googleapis.com/books/v1/volumes?q=intitle:${userInput}&maxResults=40&key=${api_key}`
     )
       .then((res) => res.json())
       .then((listOfVolumeObjects) => console.log(listOfVolumeObjects))
@@ -23,8 +23,6 @@ function Library(props) {
   return (
     <>
       <div>
-        <h2>Books:</h2>
-
         <form onSubmit={(e) => handleSubmit(e)}>
           <label>Search by title:</label>
           <input
@@ -35,6 +33,8 @@ function Library(props) {
           ></input>
           <button type="Submit">Submit</button>
         </form>
+
+        <h2>Books:</h2>
       </div>
     </>
   );
