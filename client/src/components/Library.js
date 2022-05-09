@@ -13,7 +13,7 @@ function Library(props) {
     // do things
 
     fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=intitle:${userInput}&maxResults=40&key=${api_key}`
+      `https://www.googleapis.com/books/v1/volumes?q=intitle:${userInput}&maxResults=40`
     )
       .then((res) => res.json())
       .then((listOfVolumeObjects) => console.log(listOfVolumeObjects))
