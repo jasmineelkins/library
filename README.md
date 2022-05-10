@@ -12,17 +12,17 @@ PROJECT REQUIREMENTS:
 
 TO-DO LIST:
 
-- WHY IS PASSWORD SHOWING UP BLANK??????
 - back end CRUD methods (done for users & books, need for shelves)
-- front end components: separate components for Netflix-style collections (ReadingCollection, WantToReadCollection, FavoritesCollection....) (KRIS RESEARCH STYLING)
-- set up Navbar (home, my books, user account)
+- front end components: separate components for Netflix-style collections (ReadingCollection, WantToReadCollection, FavoritesCollection....) (KRIS TUESDAY)
+- set up Navbar (view user account etc)
 - add searched book to collection
-- render books on page
-- React Router?
-- authorization, add users, don't show password (serializer)
-- only login OR signup is showing (JAS MONDAY)
-- home page: signup/login. clicking signup pops up form, possibly MUI?
-- show book lists using Netflix style, horizontal slideshow. clicking on a book brings a pop up.
+- render books on page and make them pretty :)
+- React Router _DONE_
+- authorization, add users _DONE_
+- don't show password (serializer), don't show password as it's being entered (JAS TUESDAY)
+- password validations (JAS TUESDAY)
+- only login OR signup is showing _DONE_
+- home page: signup/login. clicking signup pops up form - modal!
 
 STRETCH GOALS:
 

@@ -1,9 +1,19 @@
 import React, { useState } from "react";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 const defaultFormState = { username: "", password: "" };
 
 function Login({ user, setUser }) {
   const [formData, setFormData] = useState(defaultFormState);
+  const [passwordShown, setPasswordShown] = useState(false);
+
+  const passwordShownIcon =
+    passwordShown === true ? <AiFillEye /> : <AiFillEyeInvisible />;
+
+  function togglePassword(e) {
+    e.preventDefault();
+    setPasswordShown(!passwordShown);
+  }
 
   function handleChange(e) {
     setFormData({
@@ -58,11 +68,15 @@ function Login({ user, setUser }) {
         <div className="formRow">
           <label>Password:</label>
           <input
-            type="text"
+            type={passwordShown ? "text" : "password"}
             name="password"
             value={formData.password}
             onChange={(e) => handleChange(e)}
           ></input>
+
+          <button onClick={(e) => togglePassword(e)}>
+            {passwordShownIcon}
+          </button>
         </div>
 
         <button type="submit">Submit</button>
