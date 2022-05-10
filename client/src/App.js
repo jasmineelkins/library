@@ -19,7 +19,10 @@ function App() {
       .then((res) => res.json())
       .then((userObj) => {
         console.log("logged in", userObj);
-        setUser(userObj);
+
+        if (userObj.username) {
+          setUser(userObj);
+        }
       })
       .catch((error) => console.log(error.message));
   }, []);
