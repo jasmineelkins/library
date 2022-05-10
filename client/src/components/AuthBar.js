@@ -18,14 +18,13 @@ function AuthBar({ user, setUser }) {
       </div>
 
       <div className="authBarContainer">
-        <Link to="/">Home</Link>
-
         {user ? (
           <button onClick={handleLogoutClick} className="btn">
             Logout
           </button>
         ) : (
           <>
+            <Link to="/">Home</Link>
             <Link to="/signup">Signup</Link>
             <Link to="/login">Login</Link>
           </>

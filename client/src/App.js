@@ -21,21 +21,25 @@ function App() {
 
         <BrowserRouter>
           <AuthBar user={user} setUser={setUser} />
-          <Routes>
-            <>
-              <Route path="/" element={<GenericHomePage />}></Route>
+          {user ? (
+            <Library />
+          ) : (
+            <Routes>
+              <>
+                <Route path="/" element={<GenericHomePage />}></Route>
 
-              <Route
-                path="/signup"
-                element={<Signup user={user} setUser={setUser} />}
-              ></Route>
+                <Route
+                  path="/signup"
+                  element={<Signup user={user} setUser={setUser} />}
+                ></Route>
 
-              <Route
-                path="/login"
-                element={<Login user={user} setUser={setUser} />}
-              ></Route>
-            </>
-          </Routes>
+                <Route
+                  path="/login"
+                  element={<Login user={user} setUser={setUser} />}
+                ></Route>
+              </>
+            </Routes>
+          )}
         </BrowserRouter>
       </div>
       <Footer />
