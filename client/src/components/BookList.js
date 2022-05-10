@@ -1,11 +1,11 @@
 import React from "react";
 import BookCard from "./BookCard";
 
-function BookList({ bookListObj }) {
+function BookList({ bookList }) {
   let booksToDisplay;
 
-  if (bookListObj && bookListObj !== {}) {
-    booksToDisplay = bookListObj.map((book) => {
+  if (bookList && bookList !== {}) {
+    booksToDisplay = bookList.map((book) => {
       return <BookCard key={book.etag} book={book} />;
     });
   }

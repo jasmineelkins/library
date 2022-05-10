@@ -3,7 +3,7 @@ import BookList from "./BookList";
 
 function Library(props) {
   const [userInput, setUserInput] = useState("");
-  const [bookListObj, setBookListObj] = useState([]);
+  const [bookList, setBookList] = useState([]);
 
   //   GET list of books by subject
   //   https://www.googleapis.com/books/v1/volumes?q=subject:fiction
@@ -18,7 +18,7 @@ function Library(props) {
       .then((res) => res.json())
       .then((objectContainingVolumeArray) => {
         console.log(objectContainingVolumeArray.items);
-        setBookListObj(objectContainingVolumeArray.items);
+        setBookList(objectContainingVolumeArray.items);
       })
       .catch((error) => console.log(error.message));
   }
@@ -37,7 +37,7 @@ function Library(props) {
           <button type="Submit">Submit</button>
         </form>
 
-        <BookList bookListObj={bookListObj} />
+        <BookList bookList={bookList} />
       </div>
     </>
   );

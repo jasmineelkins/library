@@ -3,14 +3,17 @@ import React from 'react'
 function BookCard({book}) {
 
     const {title, description, pageCount}  = book.volumeInfo
-    // const image = book.volumeInfo[0].imageLinks.thumbnail
-    // imageLinks:{thumbnail}}
+
+    console.log("####### volumeInfo image links: ", book.volumeInfo.imageLinks)
   return (
     <>
     <p>{title}</p>
     <p>{description}</p>
     <p>{pageCount}</p>
-    {/* <p>{thumbnail}</p> */}
+    { book.volumeInfo.imageLinks === undefined
+        ? <span>undefined image links</span>
+        : <img src={book.volumeInfo.imageLinks.thumbnail}/> }
+
     </>
   )
 }
