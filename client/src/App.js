@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
@@ -8,9 +8,21 @@ import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import AuthBar from "./components/AuthBar";
+import GenericHomePage from "./components/GenericHomePage";
 
 function App() {
   const [user, setUser] = useState(null);
+
+  // AUTO LOGIN
+  useEffect(() => {
+    fetch(`/me`)
+      .then((res) => res.json())
+      .then((userObj) => {
+        console.log("logged in", userObj);
+        setUser(userObj);
+      })
+      .catch((error) => console.log(error.message));
+  }, []);
 
   return (
     <div className="pageContainer">
@@ -20,11 +32,13 @@ function App() {
 
         <BrowserRouter>
           <AuthBar user={user} setUser={setUser} />
-          <Routes>
-            <>
-              <Route path="/" element={<Library />}></Route>
-
+          {user ? (
+            <Library />
+          ) : (
+            <Routes>
               <>
+                <Route path="/" element={<GenericHomePage />}></Route>
+
                 <Route
                   path="/signup"
                   element={<Signup user={user} setUser={setUser} />}
@@ -34,11 +48,9 @@ function App() {
                   path="/login"
                   element={<Login user={user} setUser={setUser} />}
                 ></Route>
-
-                <Route path="/" element={<Library />}></Route>
               </>
-            </>
-          </Routes>
+            </Routes>
+          )}
         </BrowserRouter>
       </div>
       <Footer />

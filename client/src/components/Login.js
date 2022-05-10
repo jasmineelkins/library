@@ -6,6 +6,7 @@ const defaultFormState = { username: "", password: "" };
 function Login({ user, setUser }) {
   const [formData, setFormData] = useState(defaultFormState);
   const [passwordShown, setPasswordShown] = useState(false);
+  const [error, setError] = useState(null);
 
   const passwordShownIcon =
     passwordShown === true ? <AiFillEye /> : <AiFillEyeInvisible />;
@@ -43,7 +44,14 @@ function Login({ user, setUser }) {
 
         if (userObj.username) {
           setUser(userObj);
+          setError(null);
         } else {
+          if (userObj.error) {
+            setError(userObj.error.login);
+          } else {
+            setError(null);
+          }
+
           setUser(null);
         }
       })
@@ -52,6 +60,9 @@ function Login({ user, setUser }) {
     // reset form
     setFormData(defaultFormState);
   }
+
+  const errorsToDisplay = error === null ? null : error;
+
   return (
     <>
       <form onSubmit={(e) => handleSubmit(e)} className="formContainer">
@@ -78,6 +89,8 @@ function Login({ user, setUser }) {
             {passwordShownIcon}
           </button>
         </div>
+
+        <span className="errorMessage">{errorsToDisplay}</span>
 
         <button type="submit">Submit</button>
       </form>
