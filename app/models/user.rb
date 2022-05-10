@@ -4,6 +4,6 @@ class User < ApplicationRecord
   has_many :shelves, dependent: :destroy
   has_many :books, through: :shelves
 
-  validates :username, presence: true
+  validates :username, :name, presence: true
   validates :username, uniqueness: true
 end

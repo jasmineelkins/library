@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 const defaultFormState = {
+  name: "",
   username: "",
   password: "",
   password_confirmation: "",
@@ -38,6 +39,7 @@ function Signup({ user, setUser }) {
         Accept: "application/json",
       },
       body: JSON.stringify({
+        name: formData.name,
         username: formData.username,
         password: formData.password,
         password_confirmation: formData.password_confirmation,
@@ -71,6 +73,16 @@ function Signup({ user, setUser }) {
   return (
     <>
       <form onSubmit={(e) => handleSubmit(e)} className="formContainer">
+        <div className="formRow">
+          <label>Name:</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={(e) => handleChange(e)}
+          ></input>
+        </div>
+
         <div className="formRow">
           <label>Username:</label>
           <input
