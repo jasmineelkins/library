@@ -25,7 +25,7 @@ function Library(props) {
 
   return (
     <>
-      <div>
+      <div className="booksContainer">
         <form onSubmit={(e) => handleSubmit(e)}>
           <label>Search by title:</label>
           <input

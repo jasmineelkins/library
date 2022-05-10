@@ -6,11 +6,12 @@ const defaultFormState = {
   password_confirmation: "",
 };
 
-function Signup(props) {
+function Signup({ user, setUser }) {
   const [formData, setFormData] = useState(defaultFormState);
 
   function handleChange(e) {
     setFormData({
+      ...formData,
       [e.target.name]: e.target.value,
     });
   }
@@ -32,7 +33,10 @@ function Signup(props) {
       }),
     })
       .then((res) => res.json())
-      .then((data) => console.log("User signup data: ", data))
+      .then((user) => {
+        console.log("User signup data: ", user);
+        setUser(user);
+      })
       .catch((error) => console.log(error.message));
 
     // reset form
@@ -40,30 +44,36 @@ function Signup(props) {
   }
   return (
     <>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <label>Username:</label>
-        <input
-          type="text"
-          name="username"
-          value={formData.username}
-          onChange={(e) => handleChange(e)}
-        ></input>
+      <form onSubmit={(e) => handleSubmit(e)} className="formContainer">
+        <div className="formRow">
+          <label>Username:</label>
+          <input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={(e) => handleChange(e)}
+          ></input>
+        </div>
 
-        <label>Password:</label>
-        <input
-          type="text"
-          name="password"
-          value={formData.password}
-          onChange={(e) => handleChange(e)}
-        ></input>
+        <div className="formRow">
+          <label>Password:</label>
+          <input
+            type="text"
+            name="password"
+            value={formData.password}
+            onChange={(e) => handleChange(e)}
+          ></input>
+        </div>
 
-        <label>Password Confirmation:</label>
-        <input
-          type="text"
-          name="password_confirmation"
-          value={formData.password_confirmation}
-          onChange={(e) => handleChange(e)}
-        ></input>
+        <div className="formRow">
+          <label>Password Confirmation:</label>
+          <input
+            type="text"
+            name="password_confirmation"
+            value={formData.password_confirmation}
+            onChange={(e) => handleChange(e)}
+          ></input>
+        </div>
 
         <button type="submit">Submit</button>
       </form>

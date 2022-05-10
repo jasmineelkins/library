@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :render_invalid
 
   def create
+    # debugger
+
     # create new User & save hashed password to db
     user = User.create!(user_params)
 
