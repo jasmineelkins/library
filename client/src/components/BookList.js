@@ -13,7 +13,7 @@ function BookList({ bookList }) {
   return (
     <>
       <h2>My Books</h2>
-      <div className="bookCollection">{booksToDisplay}</div>
+      <div className="bookCollectionContainer">{booksToDisplay}</div>
     </>
   );
 }

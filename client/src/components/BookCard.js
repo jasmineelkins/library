@@ -7,13 +7,15 @@ function BookCard({book}) {
     console.log("####### volumeInfo image links: ", book.volumeInfo.imageLinks)
   return (
     <>
-    <p>{title}</p>
+    {/* <p>{title}</p>
     <p>{description}</p>
-    <p>{pageCount}</p>
+    <p>{pageCount}</p> */}
+
+    <div className="bookCard">
     { book.volumeInfo.imageLinks === undefined
         ? <span>undefined image links</span>
-        : <img src={book.volumeInfo.imageLinks.thumbnail}/> }
-
+        : <div className="bookImgContainer"><img src={book.volumeInfo.imageLinks.thumbnail} alt={title} className="bookImg"/></div>}
+    </div>
     </>
   )
 }
