@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import BookList from './BookList'
+import BookList from "./BookList";
 
 function Library(props) {
   const [userInput, setUserInput] = useState("");
@@ -17,11 +17,11 @@ function Library(props) {
     )
       .then((res) => res.json())
       .then((objectContainingVolumeArray) => {
-        console.log(objectContainingVolumeArray.items)
-        setBookListObj(objectContainingVolumeArray.items)})
+        console.log(objectContainingVolumeArray.items);
+        setBookListObj(objectContainingVolumeArray.items);
+      })
       .catch((error) => console.log(error.message));
   }
-
 
   return (
     <>
@@ -37,7 +37,6 @@ function Library(props) {
           <button type="Submit">Submit</button>
         </form>
 
-        <h2>Books:</h2>
         <BookList bookListObj={bookListObj} />
       </div>
     </>

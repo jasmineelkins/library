@@ -30,7 +30,12 @@ function Login({ user, setUser }) {
       .then((res) => res.json())
       .then((userObj) => {
         console.log("Logged in user: ", userObj);
-        setUser(null);
+
+        if (userObj.username) {
+          setUser(userObj);
+        } else {
+          setUser(null);
+        }
       })
       .catch((error) => console.log(error.message));
 
