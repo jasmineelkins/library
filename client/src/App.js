@@ -1,20 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Header from "./components/Header";
 import Library from "./components/Library";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import AuthBar from "./components/AuthBar";
 
 function App() {
+  const [user, setUser] = useState(null);
+
   return (
     <div className="pageContainer">
       <div className="contentWrap">
         <Navbar />
         <Header />
-        <Signup />
-        <Login />
-        <Library />
+
+        <BrowserRouter>
+          <AuthBar user={user} setUser={setUser} />
+          <Routes>
+            <>
+              <Route path="/" element={<Library />}></Route>
+
+              <>
+                <Route
+                  path="/signup"
+                  element={<Signup user={user} setUser={setUser} />}
+                ></Route>
+
+                <Route
+                  path="/login"
+                  element={<Login user={user} setUser={setUser} />}
+                ></Route>
+
+                <Route path="/" element={<Library />}></Route>
+              </>
+            </>
+          </Routes>
+        </BrowserRouter>
       </div>
       <Footer />
     </div>

@@ -2,11 +2,12 @@ import React, { useState } from "react";
 
 const defaultFormState = { username: "", password: "" };
 
-function Login(props) {
+function Login({ user, setUser }) {
   const [formData, setFormData] = useState(defaultFormState);
 
   function handleChange(e) {
     setFormData({
+      ...formData,
       [e.target.name]: e.target.value,
     });
   }
@@ -22,11 +23,15 @@ function Login(props) {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        formData,
+        username: formData.username,
+        password: formData.password,
       }),
     })
       .then((res) => res.json())
-      .then((data) => console.log("Log in: ", data))
+      .then((userObj) => {
+        console.log("Logged in user: ", userObj);
+        setUser(null);
+      })
       .catch((error) => console.log(error.message));
 
     // reset form
@@ -34,22 +39,26 @@ function Login(props) {
   }
   return (
     <>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <label>Username:</label>
-        <input
-          type="text"
-          name="username"
-          value={formData.username}
-          onChange={(e) => handleChange(e)}
-        ></input>
+      <form onSubmit={(e) => handleSubmit(e)} className="formContainer">
+        <div className="formRow">
+          <label>Username:</label>
+          <input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={(e) => handleChange(e)}
+          ></input>
+        </div>
 
-        <label>Password:</label>
-        <input
-          type="text"
-          name="password"
-          value={formData.password}
-          onChange={(e) => handleChange(e)}
-        ></input>
+        <div className="formRow">
+          <label>Password:</label>
+          <input
+            type="text"
+            name="password"
+            value={formData.password}
+            onChange={(e) => handleChange(e)}
+          ></input>
+        </div>
 
         <button type="submit">Submit</button>
       </form>
