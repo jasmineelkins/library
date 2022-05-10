@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
@@ -12,6 +12,17 @@ import GenericHomePage from "./components/GenericHomePage";
 
 function App() {
   const [user, setUser] = useState(null);
+
+  // AUTO LOGIN
+  useEffect(() => {
+    fetch(`/me`)
+      .then((res) => res.json())
+      .then((userObj) => {
+        console.log("logged in", userObj);
+        setUser(userObj);
+      })
+      .catch((error) => console.log(error.message));
+  }, []);
 
   return (
     <div className="pageContainer">
