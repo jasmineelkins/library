@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import AuthBar from "./components/AuthBar";
+import GenericHomePage from "./components/GenericHomePage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -22,21 +23,17 @@ function App() {
           <AuthBar user={user} setUser={setUser} />
           <Routes>
             <>
-              <Route path="/" element={<Library />}></Route>
+              <Route path="/" element={<GenericHomePage />}></Route>
 
-              <>
-                <Route
-                  path="/signup"
-                  element={<Signup user={user} setUser={setUser} />}
-                ></Route>
+              <Route
+                path="/signup"
+                element={<Signup user={user} setUser={setUser} />}
+              ></Route>
 
-                <Route
-                  path="/login"
-                  element={<Login user={user} setUser={setUser} />}
-                ></Route>
-
-                <Route path="/" element={<Library />}></Route>
-              </>
+              <Route
+                path="/login"
+                element={<Login user={user} setUser={setUser} />}
+              ></Route>
             </>
           </Routes>
         </BrowserRouter>

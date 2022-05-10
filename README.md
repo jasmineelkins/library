@@ -13,18 +13,28 @@ PROJECT REQUIREMENTS:
 TO-DO LIST:
 
 - back end CRUD methods (done for users & books, need for shelves)
-- front end components: separate components for Netflix-style collections (ReadingCollection, WantToReadCollection, FavoritesCollection....) (KRIS TUESDAY)
+- front end components: separate components for Netflix-style collections (ReadingCollection, WantToReadCollection, FavoritesCollection....) _(KRIS TUESDAY)_
 - set up Navbar (view user account etc)
 - add searched book to collection
 - render books on page and make them pretty :)
 - React Router _DONE_
 - authorization, add users _DONE_
-- don't show password (serializer), don't show password as it's being entered (JAS TUESDAY)
-- password validations (JAS TUESDAY)
+- don't show password (serializer)
+- don't show password as it's being entered (JAS TUESDAY) _DONE_
+- password validations _DONE_
 - only login OR signup is showing _DONE_
 - home page: signup/login. clicking signup pops up form - modal!
+- user can add books to shelves \*needs a button to add _(JAS- TUESDAY)_
+- only show Home page if user logged in _(JAS- TUESDAY)_
+
+LITTLE DETAILS TO FIX....
+
+- passwords don't match error message
+- format form inputs & labels
 
 STRETCH GOALS:
+
+- how to import data from excel sheets????
 
 - user can import goodreads
 - recommendations based on genre

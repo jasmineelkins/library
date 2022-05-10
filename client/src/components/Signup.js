@@ -10,6 +10,7 @@ const defaultFormState = {
 function Signup({ user, setUser }) {
   const [formData, setFormData] = useState(defaultFormState);
   const [passwordShown, setPasswordShown] = useState(false);
+  const [errors, setErrors] = useState(null);
 
   const passwordShownIcon =
     passwordShown === true ? <AiFillEye /> : <AiFillEyeInvisible />;
@@ -43,15 +44,30 @@ function Signup({ user, setUser }) {
       }),
     })
       .then((res) => res.json())
-      .then((user) => {
-        console.log("User signup data: ", user);
-        setUser(user);
+      .then((userObj) => {
+        console.log("User signup data: ", userObj);
+
+        if (userObj.username) {
+          setUser(userObj);
+          setErrors(null);
+        } else {
+          if (userObj.errors) {
+            setErrors(userObj.errors);
+          } else {
+            setErrors(null);
+          }
+
+          setUser(null);
+        }
       })
       .catch((error) => console.log(error.message));
 
     // reset form
     setFormData(defaultFormState);
   }
+
+  const errorsToDisplay = errors === null ? null : errors[0];
+
   return (
     <>
       <form onSubmit={(e) => handleSubmit(e)} className="formContainer">
@@ -86,6 +102,8 @@ function Signup({ user, setUser }) {
         </div>
 
         <button onClick={(e) => togglePassword(e)}>{passwordShownIcon}</button>
+
+        <span className="errorMessage">{errorsToDisplay}</span>
 
         <button type="submit">Submit</button>
       </form>

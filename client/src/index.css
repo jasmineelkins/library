@@ -72,6 +72,18 @@ header h1 {
   justify-content: flex-end;
 }
 
+.errorMessage {
+  color: tomato;
+  font-style: italic;
+  font-size: smaller;
+}
+
+/* LIBRARY ------------------------------------------------------------ */
+.homeContainer {
+  text-align: center;
+  margin: 3em;
+}
+
 /* LIBRARY ------------------------------------------------------------ */
 .booksContainer h2 {
   margin: 1em;
