@@ -76,7 +76,6 @@ function Library({ clickedBook, setClickedBook }) {
   return (
     <>
       <div className="booksContainer">
-        {/* <BookList bookList={bookList} /> */}
         <Row categoryTitle="Fiction" fetchedBooks={fictionList} clickedBook={clickedBook} setClickedBook={setClickedBook}></Row>
         <Row categoryTitle="History" fetchedBooks={historyList}></Row>
         <Row categoryTitle="Nonfiction" fetchedBooks={nonfictionList}></Row>
