@@ -5,7 +5,7 @@ function Header(props) {
     <>
       <header>
         {/* Banner - image? */}
-        <h1>Library</h1>
+        <h1>BookBook</h1>
       </header>
     </>
   );

@@ -14,19 +14,19 @@ function Library(props) {
   //   https://www.googleapis.com/books/v1/volumes?q=subject:fiction
 
   //SEARCH FUNCTION - THIS WON'T RENDER UNTIL THERE'S A USER INPUT
-  function handleSubmit(e) {
-    e.preventDefault();
+  // function handleSubmit(e) {
+  //   e.preventDefault();
 
-    fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=intitle:${userInput}&maxResults=40`
-    )
-      .then((res) => res.json())
-      .then((objectContainingVolumeArray) => {
-        console.log(objectContainingVolumeArray.items);
-        setBookList(objectContainingVolumeArray.items);
-      })
-      .catch((error) => console.log(error.message));
-  }
+  //   fetch(
+  //     `https://www.googleapis.com/books/v1/volumes?q=intitle:${userInput}&maxResults=40`
+  //   )
+  //     .then((res) => res.json())
+  //     .then((objectContainingVolumeArray) => {
+  //       console.log(objectContainingVolumeArray.items);
+  //       setBookList(objectContainingVolumeArray.items);
+  //     })
+  //     .catch((error) => console.log(error.message));
+  // }
 
   // GRABBING LIST OF OF BOOKS BY SUBJECT-FICTION
   useEffect(() => {
