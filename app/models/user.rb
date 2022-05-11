@@ -6,4 +6,8 @@ class User < ApplicationRecord
 
   validates :username, :name, presence: true
   validates :username, uniqueness: true
+
+  def created_at
+    attributes['created_at'].strftime('%B %d, %Y')
+  end
 end

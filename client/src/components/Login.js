@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const defaultFormState = { username: "", password: "" };
 
@@ -7,6 +8,8 @@ function Login({ user, setUser }) {
   const [formData, setFormData] = useState(defaultFormState);
   const [passwordShown, setPasswordShown] = useState(false);
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
 
   const passwordShownIcon =
     passwordShown === true ? <AiFillEye /> : <AiFillEyeInvisible />;
@@ -54,6 +57,8 @@ function Login({ user, setUser }) {
 
           setUser(null);
         }
+
+        navigate("/");
       })
       .catch((error) => console.log(error.message));
 

@@ -11,6 +11,7 @@ import GenericHomePage from "./components/GenericHomePage";
 import BookSearch from "./components/BookSearch";
 import UserBooksList from "./components/UserBooksList";
 import BookSearchResults from "./components/BookSearchResults";
+import Profile from "./components/Profile";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -40,28 +41,41 @@ function App() {
           <Header />
           <AuthBar user={user} setUser={setUser} />
 
-          <BookSearch
-            bookList={bookList}
-            setBookList={setBookList}
-            userInput={userInput}
-            setUserInput={setUserInput}
-          />
+          <Routes>
+            {user ? (
+              <>
+                <Route
+                  path="/search"
+                  element={
+                    <BookSearch
+                      bookList={bookList}
+                      setBookList={setBookList}
+                      userInput={userInput}
+                      setUserInput={setUserInput}
+                      setUserBooksList={setUserBooksList}
+                      userBooksList={userBooksList}
+                      user={user}
+                    />
+                  }
+                ></Route>
 
-          <BookSearchResults
-            bookList={bookList}
-            setUserBooksList={setUserBooksList}
-            userBooksList={userBooksList}
-            user={user}
-          />
+                <Route
+                  path="/"
+                  element={
+                    <UserBooksList
+                      userBooksList={userBooksList}
+                      setUserBooksList={setUserBooksList}
+                      user={user}
+                    />
+                  }
+                ></Route>
 
-          {user ? (
-            <UserBooksList
-              userBooksList={userBooksList}
-              setUserBooksList={setUserBooksList}
-              user={user}
-            />
-          ) : (
-            <Routes>
+                <Route
+                  path="/profile"
+                  element={<Profile user={user} />}
+                ></Route>
+              </>
+            ) : (
               <>
                 <Route path="/" element={<GenericHomePage />}></Route>
 
@@ -75,8 +89,8 @@ function App() {
                   element={<Login user={user} setUser={setUser} />}
                 ></Route>
               </>
-            </Routes>
-          )}
+            )}
+          </Routes>
         </BrowserRouter>
       </div>
       <Footer />

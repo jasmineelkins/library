@@ -19,8 +19,8 @@ function Navbar({ user, setUser }) {
       {user ? (
         <>
           <Link to="/search">Search</Link>
-          {/* <Link to="/books">My Books</Link> */}
-          {/* <Link to="/profile">Profile</Link> */}
+          <Link to="/">My Books</Link>
+          <Link to="/profile">Profile</Link>
           <button onClick={handleLogoutClick} className="btn">
             Logout
           </button>

@@ -1,6 +1,15 @@
 import React, { useState } from "react";
+import BookSearchResults from "./BookSearchResults";
 
-function BookSearch({ userInput, setUserInput, bookList, setBookList }) {
+function BookSearch({
+  userInput,
+  setUserInput,
+  bookList,
+  setBookList,
+  setUserBooksList,
+  userBooksList,
+  user,
+}) {
   //   GET list of books by subject:
   //   https://www.googleapis.com/books/v1/volumes?q=subject:fiction
 
@@ -32,6 +41,13 @@ function BookSearch({ userInput, setUserInput, bookList, setBookList }) {
           <button type="Submit">Submit</button>
         </form>
       </div>
+
+      <BookSearchResults
+        bookList={bookList}
+        setUserBooksList={setUserBooksList}
+        userBooksList={userBooksList}
+        user={user}
+      />
     </>
   );
 }
