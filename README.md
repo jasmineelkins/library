@@ -12,14 +12,14 @@ PROJECT REQUIREMENTS:
 
 TO-DO LIST:
 
-- back end CRUD methods (done for users & books, need for shelves)
 - left/right buttons to scroll collections _KRIS WEDNESDAY_
-- set up Navbar: Search, My Books, Profile
 - clicking a book opens modal with more info _KRIS WEDNESDAY_
+- user can rate/review a book _JAS WEDNESDAY_
 - user can add book to different shelves: Currently Reading, Want To Read, Have Read _JAS WEDNESDAY_
+- user can remove a book from their shelf
+- if no image links, don't show book on home page
 - IMPORTANT: need to add shelf id when adding book _JAS WEDNESDAY_
-- don't show password (serializer)
-- home page: signup/login. clicking signup pops up form - modal!
+- back end CRUD methods (done for users & books, need for shelves) _DONE_
 - book 'collections' scroll horizontally, like Netflix _DONE_
 - render books on page and make them pretty :) _DONE_
 - React Router _DONE_
@@ -32,9 +32,11 @@ TO-DO LIST:
 
 LITTLE DETAILS TO FIX....
 
+- home page: signup/login. clicking signup pops up form - modal maybe ?
+- add a Profile & link to NavBar _DONE_
 - add name to sign up for & welcome message _DONE_
 - 'passwords don't match' - write a better error message
-- format form inputs & labels
+- format form inputs & labels _DONE_
 
 STRETCH GOALS:
 

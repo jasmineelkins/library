@@ -1,0 +1,2 @@
+module ShelfspacesHelper
+end

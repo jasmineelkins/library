@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const defaultFormState = { username: "", password: "" };
 
@@ -7,6 +8,8 @@ function Login({ user, setUser }) {
   const [formData, setFormData] = useState(defaultFormState);
   const [passwordShown, setPasswordShown] = useState(false);
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
 
   const passwordShownIcon =
     passwordShown === true ? <AiFillEye /> : <AiFillEyeInvisible />;
@@ -54,6 +57,8 @@ function Login({ user, setUser }) {
 
           setUser(null);
         }
+
+        navigate("/");
       })
       .catch((error) => console.log(error.message));
 
@@ -64,8 +69,8 @@ function Login({ user, setUser }) {
   const errorsToDisplay = error === null ? null : error;
 
   return (
-    <>
-      <form onSubmit={(e) => handleSubmit(e)} className="formContainer">
+    <div className="authFormContainer">
+      <form onSubmit={(e) => handleSubmit(e)} className="authForm">
         <div className="formRow">
           <label>Username:</label>
           <input
@@ -84,17 +89,15 @@ function Login({ user, setUser }) {
             value={formData.password}
             onChange={(e) => handleChange(e)}
           ></input>
-
-          <button onClick={(e) => togglePassword(e)}>
-            {passwordShownIcon}
-          </button>
         </div>
+
+        <button onClick={(e) => togglePassword(e)}>{passwordShownIcon}</button>
 
         <span className="errorMessage">{errorsToDisplay}</span>
 
         <button type="submit">Submit</button>
       </form>
-    </>
+    </div>
   );
 }
 

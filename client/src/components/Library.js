@@ -33,7 +33,7 @@ function Library({ clickedBook, setClickedBook }) {
     fetch("https://www.googleapis.com/books/v1/volumes?q=subject:fiction")
       .then((res) => res.json())
       .then((objectContainingFictionVolumeArray) => {
-        console.log(objectContainingFictionVolumeArray.items);
+        console.log("Fiction list: ", objectContainingFictionVolumeArray.items);
         setFictionList(objectContainingFictionVolumeArray.items);
       });
   }, []);
@@ -42,9 +42,9 @@ function Library({ clickedBook, setClickedBook }) {
   useEffect(() => {
     fetch("https://www.googleapis.com/books/v1/volumes?q=subject:history")
       .then((res) => res.json())
-      .then((objectContainingFictionVolumeArray) => {
-        console.log(objectContainingFictionVolumeArray.items);
-        setHistoryList(objectContainingFictionVolumeArray.items);
+      .then((objectContainingHistoryVolumeArray) => {
+        console.log("History list: ", objectContainingHistoryVolumeArray.items);
+        setHistoryList(objectContainingHistoryVolumeArray.items);
       });
   }, []);
 
@@ -52,9 +52,12 @@ function Library({ clickedBook, setClickedBook }) {
   useEffect(() => {
     fetch("https://www.googleapis.com/books/v1/volumes?q=subject:nonfiction")
       .then((res) => res.json())
-      .then((objectContainingFictionVolumeArray) => {
-        console.log(objectContainingFictionVolumeArray.items);
-        setnonfiction(objectContainingFictionVolumeArray.items);
+      .then((objectContainingNonFictionVolumeArray) => {
+        console.log(
+          "Non-Fiction list: ",
+          objectContainingNonFictionVolumeArray.items
+        );
+        setnonfiction(objectContainingNonFictionVolumeArray.items);
       });
   }, []);
 
@@ -64,19 +67,24 @@ function Library({ clickedBook, setClickedBook }) {
       "https://www.googleapis.com/books/v1/volumes?q=subject:young&adult&fiction"
     )
       .then((res) => res.json())
-      .then((objectContainingFictionVolumeArray) => {
-        //console.log(objectContainingFictionVolumeArray.items);
-        setYoungAdultFiction(objectContainingFictionVolumeArray.items);
+      .then((objectContainingYAFictionVolumeArray) => {
+        console.log(
+          "YA Fiction list: ",
+          objectContainingYAFictionVolumeArray.items
+        );
+        setYoungAdultFiction(objectContainingYAFictionVolumeArray.items);
       });
   }, []);
-
-
-
 
   return (
     <>
       <div className="booksContainer">
-        <Row categoryTitle="Fiction" fetchedBooks={fictionList} clickedBook={clickedBook} setClickedBook={setClickedBook}></Row>
+        <Row
+          categoryTitle="Fiction"
+          fetchedBooks={fictionList}
+          clickedBook={clickedBook}
+          setClickedBook={setClickedBook}
+        ></Row>
         <Row categoryTitle="History" fetchedBooks={historyList}></Row>
         <Row categoryTitle="Nonfiction" fetchedBooks={nonfictionList}></Row>
         <Row

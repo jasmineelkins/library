@@ -11,6 +11,7 @@ import GenericHomePage from "./components/GenericHomePage";
 import BookSearch from "./components/BookSearch";
 import UserBooksList from "./components/UserBooksList";
 import BookSearchResults from "./components/BookSearchResults";
+import Profile from "./components/Profile";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -38,36 +39,60 @@ function App() {
   return (
     <div className="pageContainer">
       <div className="contentWrap">
-        <Navbar />
-        <Header />
-
         <BrowserRouter>
+          <Navbar user={user} setUser={setUser} />
+          <Header />
           <AuthBar user={user} setUser={setUser} />
-          <BookSearch
-            bookList={bookList}
-            setBookList={setBookList}
-            userInput={userInput}
-            setUserInput={setUserInput}
-          />
-          <BookSearchResults
-            bookList={bookList}
-            setUserBooksList={setUserBooksList}
-            userBooksList={userBooksList}
-            user={user}
-          />
-          {user ? (
-            <UserBooksList
-              userBooksList={userBooksList}
-              setUserBooksList={setUserBooksList}
-            />
-          ) : (
-            <Routes>
-              <> 
-                <Route path="/" element={<GenericHomePage setClickedBook={setClickedBook} clickedBook={clickedBook} />} ></Route>
+
+          <Routes>
+            {user ? (
+              <>
+                <Route
+                  path="/search"
+                  element={
+                    <BookSearch
+                      bookList={bookList}
+                      setBookList={setBookList}
+                      userInput={userInput}
+                      setUserInput={setUserInput}
+                      setUserBooksList={setUserBooksList}
+                      userBooksList={userBooksList}
+                      user={user}
+                    />
+                  }
+                ></Route>
+
+                <Route
+                  path="/"
+                  element={
+                    <UserBooksList
+                      userBooksList={userBooksList}
+                      setUserBooksList={setUserBooksList}
+                      user={user}
+                    />
+                  }
+                ></Route>
+
+                <Route
+                  path="/profile"
+                  element={<Profile user={user} />}
+                ></Route>
+              </>
+            ) : (
+              <>
+                <Route
+                  path="/"
+                  element={
+                    <GenericHomePage
+                      setClickedBook={setClickedBook}
+                      clickedBook={clickedBook}
+                    />
+                  }
+                ></Route>
 
                 <Route
                   path="/signup"
-                  element={<Signup user={user} setUser={setUser}/>}
+                  element={<Signup user={user} setUser={setUser} />}
                 ></Route>
 
                 <Route
@@ -75,8 +100,8 @@ function App() {
                   element={<Login user={user} setUser={setUser} />}
                 ></Route>
               </>
-            </Routes>
-          )}
+            )}
+          </Routes>
         </BrowserRouter>
       </div>
       <Footer />

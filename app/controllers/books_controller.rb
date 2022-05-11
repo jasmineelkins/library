@@ -3,7 +3,12 @@ class BooksController < ApplicationController
 
   # GET /books
   def index
-    books = Book.all
+    if params[:user_id]
+      user = User.find(params[:user_id])
+      books = user.books.all
+    else
+      books = Book.all
+    end
     render json: books
   end
 

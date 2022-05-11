@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import UserBooksList from "./UserBooksList";
+import { AiFillStar, AiOutlinePlus } from "react-icons/ai";
 
 function SearchedBookCard({ book, setUserBooksList, userBooksList, user }) {
+  const [selectedBook, setSelectedBook] = useState({});
   function addBookToShelf() {
+    // add book to specific shelf
+  }
+
+  function addBookToDatabase() {
     const { title, authors, description, pageCount } = book.volumeInfo;
 
     // console.log("----Volume Info: ", book.volumeInfo);
     // console.log("----Authors: ", book.volumeInfo.authors);
 
     fetch(`/books`, {
+      // adds book to booklist
+      // need to attach to user, shelf, review
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -27,8 +35,34 @@ function SearchedBookCard({ book, setUserBooksList, userBooksList, user }) {
       .then((bookObj) => {
         //   why doesn't added book have authors???
         console.log("Added book: ", bookObj);
-        setUserBooksList([...userBooksList, bookObj]);
+
+        // add saved book to user's book list. not currently useful.
+        // setUserBooksList([...userBooksList, bookObj]);
+
+        // set Selected Book state to this book
+        // setSelectedBook(bookObj);
+
+        createBookReview(bookObj.id, bookObj.title);
       })
+      .catch((error) => console.log(error.message));
+  }
+
+  function createBookReview(id, title) {
+    fetch(`reviews`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        content: `Associating ${title} to user: ${user.name}`,
+        rating: 1,
+        book_id: id,
+        user_id: user.id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((reviewObj) => console.log("Review: ", reviewObj))
       .catch((error) => console.log(error.message));
   }
   return (
@@ -43,7 +77,16 @@ function SearchedBookCard({ book, setUserBooksList, userBooksList, user }) {
               alt={book.title}
               className="searchedBookImg"
             />{" "}
-            {user ? <button onClick={addBookToShelf}>Add</button> : null}
+            {/* {user ? <button onClick={addBookToShelf}>Add</button> : null} */}
+            <div className="searchedBookButtonDiv">
+              {" "}
+              <button onClick={addBookToShelf}>
+                <AiOutlinePlus />
+              </button>
+              <button onClick={addBookToDatabase}>
+                <AiFillStar />
+              </button>
+            </div>
           </div>
         )}
       </div>
