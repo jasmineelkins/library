@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import BookList from "./BookList";
 import Row from "./Row";
 
-function Library(props) {
-  const [userInput, setUserInput] = useState("");
-  const [bookList, setBookList] = useState([]);
+function Library({ clickedBook, setClickedBook }) {
+  // const [userInput, setUserInput] = useState("");
+  // const [bookList, setBookList] = useState([]);
   const [fictionList, setFictionList] = useState([]);
   const [historyList, setHistoryList] = useState([]);
   const [nonfictionList, setnonfiction] = useState([]);
@@ -65,27 +65,19 @@ function Library(props) {
     )
       .then((res) => res.json())
       .then((objectContainingFictionVolumeArray) => {
-        console.log(objectContainingFictionVolumeArray.items);
+        //console.log(objectContainingFictionVolumeArray.items);
         setYoungAdultFiction(objectContainingFictionVolumeArray.items);
       });
   }, []);
 
+
+
+
   return (
     <>
       <div className="booksContainer">
-        {/* <form onSubmit={(e) => handleSubmit(e)}>
-          <label>Search by title:</label>
-          <input
-            type="text"
-            name="searchInput"
-            value={userInput}
-            onChange={(e) => setUserInput(e.target.value)}
-          ></input>
-          <button type="Submit">Submit</button>
-        </form> */}
-
-        <BookList bookList={bookList} />
-        <Row categoryTitle="Fiction" fetchedBooks={fictionList}></Row>
+        {/* <BookList bookList={bookList} /> */}
+        <Row categoryTitle="Fiction" fetchedBooks={fictionList} clickedBook={clickedBook} setClickedBook={setClickedBook}></Row>
         <Row categoryTitle="History" fetchedBooks={historyList}></Row>
         <Row categoryTitle="Nonfiction" fetchedBooks={nonfictionList}></Row>
         <Row

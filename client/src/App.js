@@ -17,6 +17,9 @@ function App() {
   const [userInput, setUserInput] = useState("");
   const [bookList, setBookList] = useState([]);
   const [userBooksList, setUserBooksList] = useState([]);
+  const [clickedBook, setClickedBook] = useState(null);
+
+  // console.log("SPECIFIC BOOK'S ID/ETAG", clickedBook.etag)
 
   // AUTO LOGIN
   useEffect(() => {
@@ -59,12 +62,12 @@ function App() {
             />
           ) : (
             <Routes>
-              <>
-                <Route path="/" element={<GenericHomePage />}></Route>
+              <> 
+                <Route path="/" element={<GenericHomePage setClickedBook={setClickedBook} clickedBook={clickedBook} />} ></Route>
 
                 <Route
                   path="/signup"
-                  element={<Signup user={user} setUser={setUser} />}
+                  element={<Signup user={user} setUser={setUser}/>}
                 ></Route>
 
                 <Route
