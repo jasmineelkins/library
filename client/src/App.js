@@ -9,9 +9,15 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import AuthBar from "./components/AuthBar";
 import GenericHomePage from "./components/GenericHomePage";
+import BookSearch from "./components/BookSearch";
+import UserBooksList from "./components/UserBooksList";
+import BookSearchResults from "./components/BookSearchResults";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [userInput, setUserInput] = useState("");
+  const [bookList, setBookList] = useState([]);
+  const [userBooksList, setUserBooksList] = useState([]);
 
   // AUTO LOGIN
   useEffect(() => {
@@ -35,8 +41,23 @@ function App() {
 
         <BrowserRouter>
           <AuthBar user={user} setUser={setUser} />
+          <BookSearch
+            bookList={bookList}
+            setBookList={setBookList}
+            userInput={userInput}
+            setUserInput={setUserInput}
+          />
+          <BookSearchResults
+            bookList={bookList}
+            setUserBooksList={setUserBooksList}
+            userBooksList={userBooksList}
+            user={user}
+          />
           {user ? (
-            <Library />
+            <UserBooksList
+              userBooksList={userBooksList}
+              setUserBooksList={setUserBooksList}
+            />
           ) : (
             <Routes>
               <>
