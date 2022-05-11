@@ -71,8 +71,8 @@ function Signup({ user, setUser }) {
   const errorsToDisplay = errors === null ? null : errors[0];
 
   return (
-    <>
-      <form onSubmit={(e) => handleSubmit(e)} className="formContainer">
+    <div className="authFormContainer">
+      <form onSubmit={(e) => handleSubmit(e)} className="authForm">
         <div className="formRow">
           <label>Name:</label>
           <input
@@ -104,7 +104,7 @@ function Signup({ user, setUser }) {
         </div>
 
         <div className="formRow">
-          <label>Password Confirmation:</label>
+          <label>Confirm password:</label>
           <input
             type={passwordShown ? "text" : "password"}
             name="password_confirmation"
@@ -119,7 +119,7 @@ function Signup({ user, setUser }) {
 
         <button type="submit">Submit</button>
       </form>
-    </>
+    </div>
   );
 }
 

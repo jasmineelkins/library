@@ -1,11 +1,21 @@
 class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :render_invalid
 
+  def index
+    users = User.all
+    render json: users
+  end
+
   def create
     # debugger
 
     # create new User & save hashed password to db
     user = User.create!(user_params)
+
+    # create first 3 shelves (default for every user)
+    Shelf.create!(name: 'Currently Reading', user_id: user.id)
+    Shelf.create!(name: 'Want to Read', user_id: user.id)
+    Shelf.create!(name: 'Read', user_id: user.id)
 
     # save user's ID in the session hash
     session[:user_id] = user.id

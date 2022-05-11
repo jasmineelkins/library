@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :shelfspaces
+  resources :reviews
   resources :shelves
   resources :users
   resources :books
@@ -7,6 +9,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  get '/shelves/:name', to: 'shelves#get_all_books_on_shelf'
 
   get '/me', to: 'users#show'
   post '/signup', to: 'users#create'

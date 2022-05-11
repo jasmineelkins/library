@@ -64,8 +64,8 @@ function Login({ user, setUser }) {
   const errorsToDisplay = error === null ? null : error;
 
   return (
-    <>
-      <form onSubmit={(e) => handleSubmit(e)} className="formContainer">
+    <div className="authFormContainer">
+      <form onSubmit={(e) => handleSubmit(e)} className="authForm">
         <div className="formRow">
           <label>Username:</label>
           <input
@@ -84,17 +84,15 @@ function Login({ user, setUser }) {
             value={formData.password}
             onChange={(e) => handleChange(e)}
           ></input>
-
-          <button onClick={(e) => togglePassword(e)}>
-            {passwordShownIcon}
-          </button>
         </div>
+
+        <button onClick={(e) => togglePassword(e)}>{passwordShownIcon}</button>
 
         <span className="errorMessage">{errorsToDisplay}</span>
 
         <button type="submit">Submit</button>
       </form>
-    </>
+    </div>
   );
 }
 

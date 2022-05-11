@@ -2,26 +2,22 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function AuthBar({ user, setUser }) {
-  function handleLogoutClick() {
-    //   log out user by deleting session
-    fetch("/logout", { method: "DELETE" }).then((r) => {
-      if (r.ok) {
-        setUser(null);
-        console.log(r);
-      }
-    });
-  }
+  // function handleLogoutClick() {
+  //   //   log out user by deleting session
+  //   fetch("/logout", { method: "DELETE" }).then((r) => {
+  //     if (r.ok) {
+  //       setUser(null);
+  //       console.log(r);
+  //     }
+  //   });
+  // }
   return (
     <>
-      <div className="welcomeMessage">
-        {user ? <h3>Hi, {user.name}!</h3> : <span></span>}
-      </div>
-
       <div className="authBarContainer">
         {user ? (
-          <button onClick={handleLogoutClick} className="btn">
-            Logout
-          </button>
+          <div className="welcomeMessage">
+            {user ? <h3>Hi, {user.name}!</h3> : <span></span>}
+          </div>
         ) : (
           <>
             <Link to="/">Home</Link>

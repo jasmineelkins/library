@@ -35,23 +35,25 @@ function App() {
   return (
     <div className="pageContainer">
       <div className="contentWrap">
-        <Navbar />
-        <Header />
-
         <BrowserRouter>
+          <Navbar user={user} setUser={setUser} />
+          <Header />
           <AuthBar user={user} setUser={setUser} />
+
           <BookSearch
             bookList={bookList}
             setBookList={setBookList}
             userInput={userInput}
             setUserInput={setUserInput}
           />
+
           <BookSearchResults
             bookList={bookList}
             setUserBooksList={setUserBooksList}
             userBooksList={userBooksList}
             user={user}
           />
+
           {user ? (
             <UserBooksList
               userBooksList={userBooksList}

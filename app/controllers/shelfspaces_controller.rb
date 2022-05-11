@@ -1,0 +1,2 @@
+class ShelfspacesController < ApplicationController
+end
