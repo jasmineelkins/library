@@ -13,13 +13,14 @@ PROJECT REQUIREMENTS:
 TO-DO LIST:
 
 - back end CRUD methods (done for users & books, need for shelves)
-- front end components: separate components for Netflix-style collections (ReadingCollection, WantToReadCollection, FavoritesCollection....) _(KRIS TUESDAY)_
+- left/right buttons to scroll collections
 - set up Navbar: Search, My Books, Profile
-- user can add book to different shelf options
-- IMPORTANT: need to add shelf id when adding book
+- user can add book to different shelves: Currently Reading, Want To Read, Have Read _JAS WEDNESDAY_
+- IMPORTANT: need to add shelf id when adding book _JAS WEDNESDAY_
 - don't show password (serializer)
 - home page: signup/login. clicking signup pops up form - modal!
-- render books on page and make them pretty :) _(KRIS TUESDAY)_
+- book 'collections' scroll horizontally, like Netflix _DONE_
+- render books on page and make them pretty :) _DONE_
 - React Router _DONE_
 - authorization, add users _DONE_
 - don't show password as it's being entered _DONE_
@@ -36,11 +37,12 @@ LITTLE DETAILS TO FIX....
 
 STRETCH GOALS:
 
+- recommendations based on genre
+- user can add custom-named shelves
 - pagination - show 10 results from API, click next to see 10 more
 - how to import data from excel sheets????
-
-- user can import goodreads
-- recommendations based on genre
+- import top bestseller's list & generate collection on home page
+- user can import goodreads data
 
 LEARNINGS:
 
