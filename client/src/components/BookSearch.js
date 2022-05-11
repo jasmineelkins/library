@@ -26,17 +26,20 @@ function BookSearch({
         setBookList(objectContainingVolumeArray.items);
       })
       .catch((error) => console.log(error.message));
+
+    // reset input
+    setUserInput("");
   }
   return (
-    <>
-      <div className="booksContainer">
+    <div className="bookSearchContainer">
+      <div className="bookSearchFormContainer">
         <form onSubmit={(e) => handleSubmit(e)}>
-          <label>Search by title:</label>
           <input
             type="text"
             name="searchInput"
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
+            placeholder="Enter book title"
           ></input>
           <button type="Submit">Submit</button>
         </form>
@@ -48,7 +51,7 @@ function BookSearch({
         userBooksList={userBooksList}
         user={user}
       />
-    </>
+    </div>
   );
 }
 
