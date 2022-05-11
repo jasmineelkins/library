@@ -28,50 +28,52 @@ function Library(props) {
       .catch((error) => console.log(error.message));
   }
 
-// GRABBING LIST OF OF BOOKS BY SUBJECT-FICTION
-useEffect (() =>{
-  fetch("https://www.googleapis.com/books/v1/volumes?q=subject:fiction")
-  .then((res) => res.json())
-  .then((objectContainingFictionVolumeArray) => { 
-    console.log(objectContainingFictionVolumeArray.items);
-    setFictionList(objectContainingFictionVolumeArray.items)
-  })
-},[])
+  // GRABBING LIST OF OF BOOKS BY SUBJECT-FICTION
+  useEffect(() => {
+    fetch("https://www.googleapis.com/books/v1/volumes?q=subject:fiction")
+      .then((res) => res.json())
+      .then((objectContainingFictionVolumeArray) => {
+        console.log(objectContainingFictionVolumeArray.items);
+        setFictionList(objectContainingFictionVolumeArray.items);
+      });
+  }, []);
 
-// GRABBING LIST OF OF BOOKS BY SUBJECT-HISTORY
-useEffect (() =>{
-  fetch("https://www.googleapis.com/books/v1/volumes?q=subject:history")
-  .then((res) => res.json())
-  .then((objectContainingFictionVolumeArray) => { 
-    console.log(objectContainingFictionVolumeArray.items);
-    setHistoryList(objectContainingFictionVolumeArray.items)
-  })
-},[])
+  // GRABBING LIST OF OF BOOKS BY SUBJECT-HISTORY
+  useEffect(() => {
+    fetch("https://www.googleapis.com/books/v1/volumes?q=subject:history")
+      .then((res) => res.json())
+      .then((objectContainingFictionVolumeArray) => {
+        console.log(objectContainingFictionVolumeArray.items);
+        setHistoryList(objectContainingFictionVolumeArray.items);
+      });
+  }, []);
 
-// GRABBING LIST OF OF BOOKS BY SUBJECT-NONFICTION
-useEffect (() =>{
-  fetch("https://www.googleapis.com/books/v1/volumes?q=subject:nonfiction")
-  .then((res) => res.json())
-  .then((objectContainingFictionVolumeArray) => { 
-    console.log(objectContainingFictionVolumeArray.items);
-    setnonfiction(objectContainingFictionVolumeArray.items)
-  })
-},[])
+  // GRABBING LIST OF OF BOOKS BY SUBJECT-NONFICTION
+  useEffect(() => {
+    fetch("https://www.googleapis.com/books/v1/volumes?q=subject:nonfiction")
+      .then((res) => res.json())
+      .then((objectContainingFictionVolumeArray) => {
+        console.log(objectContainingFictionVolumeArray.items);
+        setnonfiction(objectContainingFictionVolumeArray.items);
+      });
+  }, []);
 
-// GRABBING LIST OF OF BOOKS BY ADULT FICTION
-useEffect (() =>{
-  fetch("https://www.googleapis.com/books/v1/volumes?q=subject:young&adult&fiction")
-  .then((res) => res.json())
-  .then((objectContainingFictionVolumeArray) => { 
-    console.log(objectContainingFictionVolumeArray.items);
-    setYoungAdultFiction(objectContainingFictionVolumeArray.items)
-  })
-},[])
-  
+  // GRABBING LIST OF OF BOOKS BY ADULT FICTION
+  useEffect(() => {
+    fetch(
+      "https://www.googleapis.com/books/v1/volumes?q=subject:young&adult&fiction"
+    )
+      .then((res) => res.json())
+      .then((objectContainingFictionVolumeArray) => {
+        console.log(objectContainingFictionVolumeArray.items);
+        setYoungAdultFiction(objectContainingFictionVolumeArray.items);
+      });
+  }, []);
+
   return (
     <>
       <div className="booksContainer">
-        <form onSubmit={(e) => handleSubmit(e)}>
+        {/* <form onSubmit={(e) => handleSubmit(e)}>
           <label>Search by title:</label>
           <input
             type="text"
@@ -80,13 +82,16 @@ useEffect (() =>{
             onChange={(e) => setUserInput(e.target.value)}
           ></input>
           <button type="Submit">Submit</button>
-        </form>
+        </form> */}
 
         <BookList bookList={bookList} />
         <Row categoryTitle="Fiction" fetchedBooks={fictionList}></Row>
         <Row categoryTitle="History" fetchedBooks={historyList}></Row>
         <Row categoryTitle="Nonfiction" fetchedBooks={nonfictionList}></Row>
-        <Row categoryTitle="Young Adult Fiction" fetchedBooks={youngAdultFictionList}></Row>
+        <Row
+          categoryTitle="Young Adult Fiction"
+          fetchedBooks={youngAdultFictionList}
+        ></Row>
       </div>
     </>
   );

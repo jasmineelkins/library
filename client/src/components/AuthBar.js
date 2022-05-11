@@ -14,7 +14,7 @@ function AuthBar({ user, setUser }) {
   return (
     <>
       <div className="welcomeMessage">
-        {user ? <h3>Hi, {user.username}!</h3> : <span></span>}
+        {user ? <h3>Hi, {user.name}!</h3> : <span></span>}
       </div>
 
       <div className="authBarContainer">

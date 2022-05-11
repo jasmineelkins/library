@@ -14,26 +14,29 @@ TO-DO LIST:
 
 - back end CRUD methods (done for users & books, need for shelves)
 - front end components: separate components for Netflix-style collections (ReadingCollection, WantToReadCollection, FavoritesCollection....) _(KRIS TUESDAY)_
-- set up Navbar (view user account etc)
-- add searched book to collection
-- render books on page and make them pretty :)
+- set up Navbar: Search, My Books, Profile
+- user can add book to different shelf options
+- IMPORTANT: need to add shelf id when adding book
+- don't show password (serializer)
+- home page: signup/login. clicking signup pops up form - modal!
+- render books on page and make them pretty :) _(KRIS TUESDAY)_
 - React Router _DONE_
 - authorization, add users _DONE_
-- don't show password (serializer)
-- don't show password as it's being entered (JAS TUESDAY) _DONE_
+- don't show password as it's being entered _DONE_
 - password validations _DONE_
 - only login OR signup is showing _DONE_
-- home page: signup/login. clicking signup pops up form - modal!
-- user can add books to shelves \*needs a button to add _(JAS- TUESDAY)_
-- only show Home page if user logged in _(JAS- TUESDAY)_
+- user can add books to shelf _DONE_
+- only show Home page if user logged in _DONE_
 
 LITTLE DETAILS TO FIX....
 
-- passwords don't match error message
+- add name to sign up for & welcome message _DONE_
+- 'passwords don't match' - write a better error message
 - format form inputs & labels
 
 STRETCH GOALS:
 
+- pagination - show 10 results from API, click next to see 10 more
 - how to import data from excel sheets????
 
 - user can import goodreads
