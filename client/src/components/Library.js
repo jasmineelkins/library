@@ -33,7 +33,7 @@ function Library(props) {
     fetch("https://www.googleapis.com/books/v1/volumes?q=subject:fiction")
       .then((res) => res.json())
       .then((objectContainingFictionVolumeArray) => {
-        console.log(objectContainingFictionVolumeArray.items);
+        console.log("Fiction list: ", objectContainingFictionVolumeArray.items);
         setFictionList(objectContainingFictionVolumeArray.items);
       });
   }, []);
@@ -42,9 +42,9 @@ function Library(props) {
   useEffect(() => {
     fetch("https://www.googleapis.com/books/v1/volumes?q=subject:history")
       .then((res) => res.json())
-      .then((objectContainingFictionVolumeArray) => {
-        console.log(objectContainingFictionVolumeArray.items);
-        setHistoryList(objectContainingFictionVolumeArray.items);
+      .then((objectContainingHistoryVolumeArray) => {
+        console.log("History list: ", objectContainingHistoryVolumeArray.items);
+        setHistoryList(objectContainingHistoryVolumeArray.items);
       });
   }, []);
 
@@ -52,9 +52,12 @@ function Library(props) {
   useEffect(() => {
     fetch("https://www.googleapis.com/books/v1/volumes?q=subject:nonfiction")
       .then((res) => res.json())
-      .then((objectContainingFictionVolumeArray) => {
-        console.log(objectContainingFictionVolumeArray.items);
-        setnonfiction(objectContainingFictionVolumeArray.items);
+      .then((objectContainingNonFictionVolumeArray) => {
+        console.log(
+          "Non-Fiction list: ",
+          objectContainingNonFictionVolumeArray.items
+        );
+        setnonfiction(objectContainingNonFictionVolumeArray.items);
       });
   }, []);
 
@@ -64,9 +67,12 @@ function Library(props) {
       "https://www.googleapis.com/books/v1/volumes?q=subject:young&adult&fiction"
     )
       .then((res) => res.json())
-      .then((objectContainingFictionVolumeArray) => {
-        console.log(objectContainingFictionVolumeArray.items);
-        setYoungAdultFiction(objectContainingFictionVolumeArray.items);
+      .then((objectContainingYAFictionVolumeArray) => {
+        console.log(
+          "YA Fiction list: ",
+          objectContainingYAFictionVolumeArray.items
+        );
+        setYoungAdultFiction(objectContainingYAFictionVolumeArray.items);
       });
   }, []);
 

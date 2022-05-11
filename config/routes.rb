@@ -2,8 +2,12 @@ Rails.application.routes.draw do
   resources :shelfspaces
   resources :reviews
   resources :shelves
-  resources :users
   resources :books
+
+  resources :users, only: %i[index create show] do
+    resources :books, only: %i[show index]
+    resources :reviews, only: %i[index show create]
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

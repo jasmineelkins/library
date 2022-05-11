@@ -58,6 +58,7 @@ function App() {
             <UserBooksList
               userBooksList={userBooksList}
               setUserBooksList={setUserBooksList}
+              user={user}
             />
           ) : (
             <Routes>

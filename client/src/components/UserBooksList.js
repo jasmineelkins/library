@@ -3,36 +3,36 @@ import BookTile from "./BookTile";
 
 //******************* NEW ************************
 
-function UserBooksList({ userBooksList, setUserBooksList }) {
+function UserBooksList({ userBooksList, setUserBooksList, user }) {
   // GET all books
+  // useEffect(() => {
+  //   fetch(`/books`)
+  //     .then((res) => res.json())
+  //     .then((listOfUserBooks) => {
+  //       console.log("User's books: ", listOfUserBooks);
+  //       setUserBooksList(listOfUserBooks);
+  //     })
+  //     .catch((error) => console.log(error.message));
+  // }, [setUserBooksList]);
+
+  // const userBooksToDisplay = userBooksList.map((book) => {
+  //   return <BookTile key={book.id} book={book} />;
+  // });
+
+  // GET books for logged in user
   useEffect(() => {
-    fetch(`/books`)
+    fetch(`/users/${user.id}/books`)
       .then((res) => res.json())
       .then((listOfUserBooks) => {
         console.log("User's books: ", listOfUserBooks);
         setUserBooksList(listOfUserBooks);
       })
       .catch((error) => console.log(error.message));
-  }, [setUserBooksList]);
+  }, []);
 
   const userBooksToDisplay = userBooksList.map((book) => {
     return <BookTile key={book.id} book={book} />;
   });
-
-  // GET books from Read shelf
-  useEffect(() => {
-    fetch(`/shelves/read`)
-      .then((res) => res.json())
-      .then((listOfUserBooks) => {
-        console.log("User's Read books: ", listOfUserBooks);
-        // setUserBooksList(listOfUserBooks);
-      })
-      .catch((error) => console.log(error.message));
-  }, [setUserBooksList]);
-
-  // const userBooksToDisplay = userBooksList.map((book) => {
-  //   return <BookTile key={book.id} book={book} />;
-  // });
 
   return (
     <>
