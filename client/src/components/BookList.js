@@ -1,7 +1,7 @@
 import React from "react";
 import BookCard from "./BookCard";
 
-function BookList({ bookList }) {
+function BookList({ bookList,  }) {
   // let booksToDisplay;
 
   // if (bookList && bookList !== {}) {

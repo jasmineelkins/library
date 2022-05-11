@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
 import BookList from "./BookList";
+import Row from "./Row";
 
 function Library(props) {
   const [userInput, setUserInput] = useState("");
   const [bookList, setBookList] = useState([]);
+  const [fictionList, setFictionList] = useState([]);
+  const [historyList, setHistoryList] = useState([]);
+  const [nonfictionList, setnonfiction] = useState([]);
+  const [youngAdultFictionList, setYoungAdultFiction] = useState([]);
 
   //   GET list of books by subject
   //   https://www.googleapis.com/books/v1/volumes?q=subject:fiction
 
+  //SEARCH FUNCTION - THIS WON'T RENDER UNTIL THERE'S A USER INPUT
   function handleSubmit(e) {
     e.preventDefault();
-    // do things
 
     fetch(
       `https://www.googleapis.com/books/v1/volumes?q=intitle:${userInput}&maxResults=40`
@@ -23,6 +28,46 @@ function Library(props) {
       .catch((error) => console.log(error.message));
   }
 
+// GRABBING LIST OF OF BOOKS BY SUBJECT-FICTION
+useEffect (() =>{
+  fetch("https://www.googleapis.com/books/v1/volumes?q=subject:fiction")
+  .then((res) => res.json())
+  .then((objectContainingFictionVolumeArray) => { 
+    console.log(objectContainingFictionVolumeArray.items);
+    setFictionList(objectContainingFictionVolumeArray.items)
+  })
+},[])
+
+// GRABBING LIST OF OF BOOKS BY SUBJECT-HISTORY
+useEffect (() =>{
+  fetch("https://www.googleapis.com/books/v1/volumes?q=subject:history")
+  .then((res) => res.json())
+  .then((objectContainingFictionVolumeArray) => { 
+    console.log(objectContainingFictionVolumeArray.items);
+    setHistoryList(objectContainingFictionVolumeArray.items)
+  })
+},[])
+
+// GRABBING LIST OF OF BOOKS BY SUBJECT-NONFICTION
+useEffect (() =>{
+  fetch("https://www.googleapis.com/books/v1/volumes?q=subject:nonfiction")
+  .then((res) => res.json())
+  .then((objectContainingFictionVolumeArray) => { 
+    console.log(objectContainingFictionVolumeArray.items);
+    setnonfiction(objectContainingFictionVolumeArray.items)
+  })
+},[])
+
+// GRABBING LIST OF OF BOOKS BY ADULT FICTION
+useEffect (() =>{
+  fetch("https://www.googleapis.com/books/v1/volumes?q=subject:young&adult&fiction")
+  .then((res) => res.json())
+  .then((objectContainingFictionVolumeArray) => { 
+    console.log(objectContainingFictionVolumeArray.items);
+    setYoungAdultFiction(objectContainingFictionVolumeArray.items)
+  })
+},[])
+  
   return (
     <>
       <div className="booksContainer">
@@ -38,6 +83,10 @@ function Library(props) {
         </form>
 
         <BookList bookList={bookList} />
+        <Row categoryTitle="Fiction" fetchedBooks={fictionList}></Row>
+        <Row categoryTitle="History" fetchedBooks={historyList}></Row>
+        <Row categoryTitle="Nonfiction" fetchedBooks={nonfictionList}></Row>
+        <Row categoryTitle="Young Adult Fiction" fetchedBooks={youngAdultFictionList}></Row>
       </div>
     </>
   );
