@@ -1,7 +1,7 @@
 import React from "react";
 import BookCard from "./BookCard";
 
-function BookList({ bookList,  }) {
+function BookList({ bookList }) {
   // let booksToDisplay;
 
   // if (bookList && bookList !== {}) {
@@ -16,7 +16,6 @@ function BookList({ bookList,  }) {
 
   return (
     <>
-      <h2>My Books</h2>
       <div className="bookCollectionContainer">{booksToDisplay}</div>
     </>
   );

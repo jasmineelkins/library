@@ -13,8 +13,9 @@ PROJECT REQUIREMENTS:
 TO-DO LIST:
 
 - back end CRUD methods (done for users & books, need for shelves)
-- left/right buttons to scroll collections
+- left/right buttons to scroll collections _KRIS WEDNESDAY_
 - set up Navbar: Search, My Books, Profile
+- clicking a book opens modal with more info _KRIS WEDNESDAY_
 - user can add book to different shelves: Currently Reading, Want To Read, Have Read _JAS WEDNESDAY_
 - IMPORTANT: need to add shelf id when adding book _JAS WEDNESDAY_
 - don't show password (serializer)

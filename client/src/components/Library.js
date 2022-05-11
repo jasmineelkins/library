@@ -73,17 +73,6 @@ function Library(props) {
   return (
     <>
       <div className="booksContainer">
-        {/* <form onSubmit={(e) => handleSubmit(e)}>
-          <label>Search by title:</label>
-          <input
-            type="text"
-            name="searchInput"
-            value={userInput}
-            onChange={(e) => setUserInput(e.target.value)}
-          ></input>
-          <button type="Submit">Submit</button>
-        </form> */}
-
         <BookList bookList={bookList} />
         <Row categoryTitle="Fiction" fetchedBooks={fictionList}></Row>
         <Row categoryTitle="History" fetchedBooks={historyList}></Row>
