@@ -1,9 +1,18 @@
 import React, { useState } from "react";
 import UserBooksList from "./UserBooksList";
 import { AiFillStar, AiOutlinePlus } from "react-icons/ai";
+import { FaHeart, FaBookmark } from "react-icons/fa";
 
-function SearchedBookCard({ book, setUserBooksList, userBooksList, user }) {
+function SearchedBookCard({
+  book,
+  setUserBooksList,
+  userBooksList,
+  user,
+  selectedStatus,
+  onBookAdded,
+}) {
   const [selectedBook, setSelectedBook] = useState({});
+
   function addBookToShelf() {
     // add book to specific shelf
   }
@@ -56,13 +65,17 @@ function SearchedBookCard({ book, setUserBooksList, userBooksList, user }) {
       },
       body: JSON.stringify({
         content: `Associating ${title} to user: ${user.name}`,
-        rating: 1,
+        rating: null,
         book_id: id,
         user_id: user.id,
+        status: selectedStatus,
       }),
     })
       .then((res) => res.json())
-      .then((reviewObj) => console.log("Review: ", reviewObj))
+      .then((reviewObj) => {
+        console.log("Review: ", reviewObj);
+        onBookAdded(title);
+      })
       .catch((error) => console.log(error.message));
   }
   return (
@@ -80,11 +93,11 @@ function SearchedBookCard({ book, setUserBooksList, userBooksList, user }) {
             {/* {user ? <button onClick={addBookToShelf}>Add</button> : null} */}
             <div className="searchedBookButtonDiv">
               {" "}
-              <button onClick={addBookToShelf}>
+              {/* <button onClick={addBookToShelf}>
                 <AiOutlinePlus />
-              </button>
-              <button onClick={addBookToDatabase}>
-                <AiFillStar />
+              </button> */}
+              <button onClick={addBookToDatabase} className="reviewBtn">
+                <FaBookmark />
               </button>
             </div>
           </div>

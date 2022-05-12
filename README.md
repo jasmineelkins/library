@@ -14,11 +14,14 @@ TO-DO LIST:
 
 - left/right buttons to scroll collections _KRIS WEDNESDAY_
 - clicking a book opens modal with more info _KRIS WEDNESDAY_
-- user can rate/review a book _JAS WEDNESDAY_
-- user can add book to different shelves: Currently Reading, Want To Read, Have Read _JAS WEDNESDAY_
+- user can rate/review a book _DONE_
+- user can add book to different shelves: Currently Reading, Want To Read, Have Read _DONE_
+- icon changes depending on shelf: plus(add to list), bookmark(want to), heart(read), book(currently) _JAS THURSDAY_
 - user can remove a book from their shelf
-- if no image links, don't show book on home page
-- IMPORTANT: need to add shelf id when adding book _JAS WEDNESDAY_
+- if no image links, don't show book on home page _DONE_
+- user's book collections also have slider buttons & info modals
+- show user's books by "shelf"
+- user can submit an actual review & rating
 - back end CRUD methods (done for users & books, need for shelves) _DONE_
 - book 'collections' scroll horizontally, like Netflix _DONE_
 - render books on page and make them pretty :) _DONE_
@@ -50,3 +53,4 @@ STRETCH GOALS:
 LEARNINGS:
 
 CREDITS:
+React Toastify: https://www.npmjs.com/package/react-toastify

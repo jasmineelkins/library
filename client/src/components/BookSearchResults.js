@@ -6,6 +6,8 @@ function BookSearchResults({
   setUserBooksList,
   userBooksList,
   user,
+  selectedStatus,
+  onBookAdded,
 }) {
   //   let booksToDisplay;
 
@@ -25,6 +27,8 @@ function BookSearchResults({
         setUserBooksList={setUserBooksList}
         userBooksList={userBooksList}
         user={user}
+        selectedStatus={selectedStatus}
+        onBookAdded={onBookAdded}
       />
     );
   });
