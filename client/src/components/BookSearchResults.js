@@ -15,7 +15,9 @@ function BookSearchResults({
   //     });
   //   }
 
-  const booksToDisplay = bookList.map((book) => {
+  const filteredBooks = bookList.filter((book) => book.volumeInfo.imageLinks);
+
+  const booksToDisplay = filteredBooks.map((book) => {
     return (
       <SearchedBookCard
         key={book.etag}

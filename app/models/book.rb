@@ -4,4 +4,6 @@ class Book < ApplicationRecord
 
   has_many :shelfspaces, dependent: :destroy
   has_many :shelves, through: :shelfspaces
+
+  validates :image, :title, presence: true
 end
