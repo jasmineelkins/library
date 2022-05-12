@@ -85,11 +85,24 @@ function Library({ clickedBook, setClickedBook }) {
           clickedBook={clickedBook}
           setClickedBook={setClickedBook}
         ></Row>
-        <Row categoryTitle="History" fetchedBooks={historyList}></Row>
-        <Row categoryTitle="Nonfiction" fetchedBooks={nonfictionList}></Row>
+        <Row 
+          categoryTitle="History" 
+          fetchedBooks={historyList}
+          clickedBook={clickedBook}
+          setClickedBook={setClickedBook}
+        ></Row>
+        <Row 
+          categoryTitle="Nonfiction" 
+          fetchedBooks={nonfictionList}
+          clickedBook={clickedBook}
+          setClickedBook={setClickedBook}
+        ></Row>
+
         <Row
           categoryTitle="Young Adult Fiction"
           fetchedBooks={youngAdultFictionList}
+          clickedBook={clickedBook}
+          setClickedBook={setClickedBook}
         ></Row>
       </div>
     </>

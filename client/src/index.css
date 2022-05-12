@@ -123,10 +123,10 @@ header h1 {
   margin: 3em;
 }
 
-/* LIBRARY ------------------------------------------------------------ */
+/* LIBRARY / HOME  ------------------------------------------------------------ */
 .booksContainer h2 {
-  margin: 1em;
-  text-align: center;
+  margin-top: 2em;
+  text-align: left;
 }
 
 /* FOOTER ------------------------------------------------------------ */
@@ -152,7 +152,6 @@ footer {
   padding: 25px 0;
   overflow-y: hidden;
   overflow-x: scroll;
-  margin-bottom: 100px;
 }
 
 .bookCollectionContainer:hover .bookCard {
@@ -161,11 +160,6 @@ footer {
 
 .bookCollectionContainer::-webkit-scrollbar {
   display: none;
-}
-
-.categoryTitle {
-  margin: 0;
-  padding: 0;
 }
 
 /* BOOK SEARCH ------------------------------------------------------------------------- */
@@ -207,11 +201,6 @@ footer {
 
 .bookCollectionContainer::-webkit-scrollbar {
   display: none;
-}
-
-.categoryTitle {
-  margin: 0;
-  padding: 0;
 }
 
 .bookSearchFormContainer {
@@ -298,12 +287,15 @@ footer {
 .bookCard {
   flex: 0 0 17%;
   text-align: center;
-  margin: 0 3px;
   transition: transform 400ms ease 100ms;
   width: 20rem;
   height: 20rem;
-  object-fit: contain;
   width: 100%;
+}
+
+.bookImgContainer {
+  width: 20rem;
+  height: 18rem;
 }
 
 .bookCard:hover ~ .bookCard {
@@ -316,7 +308,8 @@ footer {
 
 .bookImg {
   width: 90%;
-  max-height: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* MODAL - SHOW BOOK DETAILS 
@@ -329,34 +322,83 @@ footer {
   transform: translate(-50%, -50%);
   width: 700px;
   max-width: 100%;
-  height: 600px;
+  height: 700px;
   max-height: 100%;
   animation: pop-swirl 0.5s;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(44, 42, 42, 1);
 }
 
-.modal.scroll {
-  /* margin:4px, 4px; */
+.modalContent.scroll {
   padding: 4px;
   width: 700px;
-  height: 800px;
+  height: 700px;
   overflow-x: hidden;
   overflow-y: auto;
 }
 
-/* .modal-background-mask {
+.modal-background-mask {
   position: fixed;
   width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
   background: black;
-  opacity: 0.2;
-} */
+  opacity: 0.4;
+}
 
 .colorModalText {
   color: white;
+  padding: 5px;
 }
+
+.closeCircleSize {
+  size: lg;
+}
+
+.closeDiv {
+  float: right;
+  margin-right: 30px;
+  padding: 5px;
+
+}
+
+.bookModalImgContainer {
+  width: 100%;
+  height: 300px;
+  margin: 25px 10px;
+}
+
+.bookImgModal {
+  width: 30%;
+  max-height: 100%;
+  margin-top: 30px 0;
+}
+
+.bookModalInfo {
+  width: 50%;
+  float: right;
+  margin-top: 30px
+}
+
+.modalTitle {
+  color:white;
+  padding: 10px;
+}
+
+.descriptionModalContainer {
+  padding: 20 0;
+  margin: 0 50px
+}
+
+.descriptionText {
+  color:white;
+  text-align: justify;
+}
+
+.showMoreButton {
+  align-content: center;
+}
+
 
 /* PROFILE -------------------------------------------------------------------- */
 .profileContainer {
