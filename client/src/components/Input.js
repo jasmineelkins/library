@@ -44,11 +44,11 @@ function Input(props) {
   function handleUpload(e) {
     e.preventDefault();
 
-    const formData = new FormData();
+    // const formData = new FormData();
 
-    const upload_file = this.state.file;
+    // const upload_file = this.state.file;
 
-    formData.append("file", upload_file);
+    // formData.append("file", upload_file);
 
     // Adapter.uploadFile(this.state.type, formData).then((r) =>
     //   r.json.then(console.log)
@@ -65,7 +65,7 @@ function Input(props) {
           accept={".csv"}
           id={"csvFileInput"}
           onChange={handleOnChange}
-          value={this.state.file}
+          //   value={this.state.file}
         />
         <button onClick={(e) => handleOnSubmit(e)}>IMPORT CSV</button>
       </form>

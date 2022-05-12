@@ -4,6 +4,7 @@ function Profile({ user }) {
   const defaultProfileForm = {
     name: user.name,
     username: user.username,
+    about: user.about,
   };
 
   // console.log("user", user);
@@ -63,7 +64,7 @@ function Profile({ user }) {
         <div className="profileInnerDiv">
           <span>Name: {user.name}</span>
           <span>Username: {user.username}</span>
-          <span>Bio:</span>
+          <span>About:</span>
           <button onClick={(e) => handleClick(e)}>Edit Profile</button>
         </div>
       ) : (
@@ -86,14 +87,14 @@ function Profile({ user }) {
             ></input>
           </div>
 
-          {/* <div className="inputContainer">
-            <label>Bio:</label>
+          <div className="inputContainer">
+            <label>About:</label>
             <textarea
-              name="bio"
-              value={profileFormData.bio}
+              name="about"
+              value={profileFormData.about}
               onChange={(e) => handleChange(e)}
             ></textarea>
-          </div> */}
+          </div>
 
           <button type="submit">Save changes</button>
         </form>

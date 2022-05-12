@@ -8,13 +8,13 @@ function QuickAddStatus({ setSelectedStatus }) {
   return (
     <>
       <select
-        defaultValue="want"
+        defaultValue="Want to Read"
         name="status"
         onChange={(e) => handleOptionSelection(e)}
       >
-        <option value="current">Currently Reading</option>
-        <option value="want">Want to Read</option>
-        <option value="read">Read</option>
+        <option value="Currently Reading">Currently Reading</option>
+        <option value="Want to Read">Want to Read</option>
+        <option value="Read">Read</option>
       </select>
     </>
   );
