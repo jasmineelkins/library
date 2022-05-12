@@ -12,12 +12,15 @@ PROJECT REQUIREMENTS:
 
 TO-DO LIST:
 
-- left/right buttons to scroll collections _KRIS WEDNESDAY_
-- clicking a book opens modal with more info _KRIS WEDNESDAY_
-- icon changes depending on shelf: plus(add to list), bookmark(want to), heart(read), book(currently) _JAS THURSDAY_
-- user can remove a book from their shelf _JAS THURSDAY_
 - user's book collections also have slider buttons & info modals
 - user can submit an actual review & rating
+- don't show books on Home without images
+- deleting a book automatically re-renders the book list _JAS THURSDAY_
+
+- _DONE_ left/right buttons to scroll collections
+- _DONE_ clicking a book opens modal with more info
+- _DONE_ icon changes depending on shelf: plus(add to list), bookmark(want to), heart(read), book(currently)
+- _DONE_ user can remove a book from their shelf
 - _DONE_ if no image links, don't show book on home page
 - _DONE_ user can rate/review a book
 - _DONE_ user can add book to different shelves: Currently Reading, Want To Read, Have Read
@@ -35,7 +38,7 @@ TO-DO LIST:
 
 LITTLE DETAILS TO FIX....
 
-- clear book search results?
+- clear book search results
 - home page: signup/login. clicking signup pops up form - modal maybe ?
 - 'passwords don't match' - write a better error message
 - _DONE_ add a Profile & link to NavBar
@@ -44,12 +47,11 @@ LITTLE DETAILS TO FIX....
 
 STRETCH GOALS:
 
+- user can import goodreads data _JAS THURSDAY_
 - recommendations based on genre
 - user can add custom-named shelves
 - pagination - show 10 results from API, click next to see 10 more
-- how to import data from excel sheets????
 - import top bestseller's list & generate collection on home page
-- user can import goodreads data
 
 LEARNINGS:
 
