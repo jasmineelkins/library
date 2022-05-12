@@ -6,6 +6,8 @@ function BookSearchResults({
   setUserBooksList,
   userBooksList,
   user,
+  selectedStatus,
+  onBookAdded,
 }) {
   //   let booksToDisplay;
 
@@ -15,14 +17,20 @@ function BookSearchResults({
   //     });
   //   }
 
-  const booksToDisplay = bookList.map((book) => {
+  const filteredBooks = bookList.filter(
+    (APIbook) => APIbook.volumeInfo.imageLinks
+  );
+
+  const booksToDisplay = filteredBooks.map((APIbook) => {
     return (
       <SearchedBookCard
-        key={book.etag}
-        book={book}
+        key={APIbook.etag}
+        APIbook={APIbook}
         setUserBooksList={setUserBooksList}
         userBooksList={userBooksList}
         user={user}
+        selectedStatus={selectedStatus}
+        onBookAdded={onBookAdded}
       />
     );
   });

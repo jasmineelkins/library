@@ -34,6 +34,13 @@ class UsersController < ApplicationController
     end
   end
 
+  # UPDATE '/user/:id'
+  def update
+    user = User.find_by(id: params[:user_id])
+    user.update!(user_params)
+    render json: user
+  end
+
   private
 
   def user_params

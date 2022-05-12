@@ -1,18 +1,28 @@
 import React, { useState } from "react";
 import UserBooksList from "./UserBooksList";
-import { AiFillStar, AiOutlinePlus } from "react-icons/ai";
+// import { AiFillStar, AiOutlinePlus } from "react-icons/ai";
+import {
+  FaHeart,
+  FaBookmark,
+  FaPlus,
+  FaBookReader,
+  FaBook,
+  FaBookOpen,
+  FaRegBookmark,
+} from "react-icons/fa";
 
-function SearchedBookCard({ book, setUserBooksList, userBooksList, user }) {
+function SearchedBookCard({
+  APIbook,
+  setUserBooksList,
+  userBooksList,
+  user,
+  selectedStatus,
+  onBookAdded,
+}) {
   const [selectedBook, setSelectedBook] = useState({});
-  function addBookToShelf() {
-    // add book to specific shelf
-  }
 
   function addBookToDatabase() {
-    const { title, authors, description, pageCount } = book.volumeInfo;
-
-    // console.log("----Volume Info: ", book.volumeInfo);
-    // console.log("----Authors: ", book.volumeInfo.authors);
+    const { title, authors, description, pageCount } = APIbook.volumeInfo;
 
     fetch(`/books`, {
       // adds book to booklist
@@ -25,7 +35,7 @@ function SearchedBookCard({ book, setUserBooksList, userBooksList, user }) {
       body: JSON.stringify({
         title: title,
         author: authors,
-        image: book.volumeInfo.imageLinks.thumbnail,
+        image: APIbook.volumeInfo.imageLinks.thumbnail,
         description: description,
         genre: "",
         pages: pageCount,
@@ -35,19 +45,12 @@ function SearchedBookCard({ book, setUserBooksList, userBooksList, user }) {
       .then((bookObj) => {
         //   why doesn't added book have authors???
         console.log("Added book: ", bookObj);
-
-        // add saved book to user's book list. not currently useful.
-        // setUserBooksList([...userBooksList, bookObj]);
-
-        // set Selected Book state to this book
-        // setSelectedBook(bookObj);
-
-        createBookReview(bookObj.id, bookObj.title);
+        createBookReview(bookObj);
       })
       .catch((error) => console.log(error.message));
   }
 
-  function createBookReview(id, title) {
+  function createBookReview(bookObj) {
     fetch(`reviews`, {
       method: "POST",
       headers: {
@@ -55,36 +58,46 @@ function SearchedBookCard({ book, setUserBooksList, userBooksList, user }) {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        content: `Associating ${title} to user: ${user.name}`,
-        rating: 1,
-        book_id: id,
+        content: `Associating ${bookObj.title} to user: ${user.name}`,
+        rating: null,
+        book_id: bookObj.id,
         user_id: user.id,
+        status: selectedStatus,
       }),
     })
       .then((res) => res.json())
-      .then((reviewObj) => console.log("Review: ", reviewObj))
+      .then((reviewObj) => {
+        console.log("Review: ", reviewObj);
+
+        // triggers Toast with book title and shelf info
+        onBookAdded(bookObj.title);
+
+        setUserBooksList([...userBooksList, bookObj]);
+        // console.log("AFTER ADDING BOOK TO USER BOOK LIST", userBooksList);
+      })
       .catch((error) => console.log(error.message));
   }
+
   return (
     <>
       <div className="searchedBookCard">
-        {book.volumeInfo.imageLinks === undefined ? (
+        {APIbook.volumeInfo.imageLinks === undefined ? (
           <span>undefined image links</span>
         ) : (
           <div className="searchedBookImgContainer">
             <img
-              src={book.volumeInfo.imageLinks.smallThumbnail}
-              alt={book.title}
+              src={APIbook.volumeInfo.imageLinks.smallThumbnail}
+              alt={APIbook.title}
               className="searchedBookImg"
             />{" "}
             {/* {user ? <button onClick={addBookToShelf}>Add</button> : null} */}
             <div className="searchedBookButtonDiv">
               {" "}
-              <button onClick={addBookToShelf}>
+              {/* <button onClick={addBookToShelf}>
                 <AiOutlinePlus />
-              </button>
-              <button onClick={addBookToDatabase}>
-                <AiFillStar />
+              </button> */}
+              <button onClick={addBookToDatabase} className="icon">
+                <FaPlus />
               </button>
             </div>
           </div>
