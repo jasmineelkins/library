@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import UserBooksList from "./UserBooksList";
 import { AiFillStar, AiOutlinePlus } from "react-icons/ai";
-import { FaHeart, FaBookmark } from "react-icons/fa";
+import {
+  FaHeart,
+  FaBookmark,
+  FaPlus,
+  FaBookReader,
+  FaBook,
+  FaBookOpen,
+} from "react-icons/fa";
 
 function SearchedBookCard({
   book,
@@ -19,9 +26,6 @@ function SearchedBookCard({
 
   function addBookToDatabase() {
     const { title, authors, description, pageCount } = book.volumeInfo;
-
-    // console.log("----Volume Info: ", book.volumeInfo);
-    // console.log("----Authors: ", book.volumeInfo.authors);
 
     fetch(`/books`, {
       // adds book to booklist
@@ -44,12 +48,6 @@ function SearchedBookCard({
       .then((bookObj) => {
         //   why doesn't added book have authors???
         console.log("Added book: ", bookObj);
-
-        // add saved book to user's book list. not currently useful.
-        // setUserBooksList([...userBooksList, bookObj]);
-
-        // set Selected Book state to this book
-        // setSelectedBook(bookObj);
 
         createBookReview(bookObj.id, bookObj.title);
       })
@@ -97,7 +95,7 @@ function SearchedBookCard({
                 <AiOutlinePlus />
               </button> */}
               <button onClick={addBookToDatabase} className="reviewBtn">
-                <FaBookmark />
+                <FaPlus />
               </button>
             </div>
           </div>

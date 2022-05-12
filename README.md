@@ -14,32 +14,33 @@ TO-DO LIST:
 
 - left/right buttons to scroll collections _KRIS WEDNESDAY_
 - clicking a book opens modal with more info _KRIS WEDNESDAY_
-- user can rate/review a book _DONE_
-- user can add book to different shelves: Currently Reading, Want To Read, Have Read _DONE_
 - icon changes depending on shelf: plus(add to list), bookmark(want to), heart(read), book(currently) _JAS THURSDAY_
-- user can remove a book from their shelf
-- if no image links, don't show book on home page _DONE_
+- user can remove a book from their shelf _JAS THURSDAY_
 - user's book collections also have slider buttons & info modals
-- show user's books by "shelf"
 - user can submit an actual review & rating
-- back end CRUD methods (done for users & books, need for shelves) _DONE_
-- book 'collections' scroll horizontally, like Netflix _DONE_
-- render books on page and make them pretty :) _DONE_
-- React Router _DONE_
-- authorization, add users _DONE_
-- don't show password as it's being entered _DONE_
-- password validations _DONE_
-- only login OR signup is showing _DONE_
-- user can add books to shelf _DONE_
-- only show Home page if user logged in _DONE_
+- _DONE_ if no image links, don't show book on home page
+- _DONE_ user can rate/review a book
+- _DONE_ user can add book to different shelves: Currently Reading, Want To Read, Have Read
+- _DONE_ show user's books by "shelf"
+- _DONE_ back end CRUD methods (done for users & books, need for shelves)
+- _DONE_ book 'collections' scroll horizontally, like Netflix
+- _DONE_ render books on page and make them pretty :)
+- _DONE_ React Router
+- _DONE_ authorization, add users
+- _DONE_ don't show password as it's being entered
+- _DONE_ password validations
+- _DONE_ only login OR signup is showing
+- _DONE_ user can add books to shelf
+- _DONE_ only show Home page if user logged in
 
 LITTLE DETAILS TO FIX....
 
+- clear book search results?
 - home page: signup/login. clicking signup pops up form - modal maybe ?
-- add a Profile & link to NavBar _DONE_
-- add name to sign up for & welcome message _DONE_
 - 'passwords don't match' - write a better error message
-- format form inputs & labels _DONE_
+- _DONE_ add a Profile & link to NavBar
+- _DONE_ add name to sign up for & welcome message
+- _DONE_ format form inputs & labels
 
 STRETCH GOALS:
 
