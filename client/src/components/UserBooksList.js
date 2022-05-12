@@ -28,7 +28,7 @@ function UserBooksList({ userBooksList, setUserBooksList, user }) {
         setUserBooksList(listOfUserBooks);
       })
       .catch((error) => console.log(error.message));
-  }, []);
+  }, [user.id, setUserBooksList]);
 
   // const allUserBooks = userBooksList.map((book) => {
   //   return <BookTile key={book.id} book={book} />;
@@ -36,15 +36,22 @@ function UserBooksList({ userBooksList, setUserBooksList, user }) {
 
   // render user's Currently Reading
   const userCurrentlyReading = userBooksList
-    .filter((book) => book.status === "Currently Reading")
-    .map((book) => <BookTile key={book.id} book={book} />);
+    .filter((book) => book.reviews[0].status === "Currently Reading")
+    .map((book) => (
+      <BookTile
+        key={book.id}
+        book={book}
+        userBooksList={userBooksList}
+        setUserBooksList={setUserBooksList}
+      />
+    ));
   // render user's Currently Reading
   const userWantToRead = userBooksList
-    .filter((book) => book.status === "Want to Read")
+    .filter((book) => book.reviews[0].status === "Want to Read")
     .map((book) => <BookTile key={book.id} book={book} />);
   // render user's Currently Reading
   const userHaveRead = userBooksList
-    .filter((book) => book.status === "Read")
+    .filter((book) => book.reviews[0].status === "Read")
     .map((book) => <BookTile key={book.id} book={book} />);
 
   // const testList = userBooksList.map((book) => console.log(book.status));
@@ -60,7 +67,7 @@ function UserBooksList({ userBooksList, setUserBooksList, user }) {
       <h3>Want To Read</h3>
       <div className="userBookCollectionContainer">{userWantToRead}</div>
 
-      <h3>Have Read</h3>
+      <h3>Read</h3>
       <div className="userBookCollectionContainer">{userHaveRead}</div>
     </>
   );

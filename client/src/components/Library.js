@@ -21,9 +21,9 @@ function Library({ clickedBook, setClickedBook }) {
   //     `https://www.googleapis.com/books/v1/volumes?q=intitle:${userInput}&maxResults=40`
   //   )
   //     .then((res) => res.json())
-  //     .then((objectContainingVolumeArray) => {
-  //       console.log(objectContainingVolumeArray.items);
-  //       setBookList(objectContainingVolumeArray.items);
+  //     .then((objectContainingVolumesArray) => {
+  //       console.log(objectContainingVolumesArray.items);
+  //       setBookList(objectContainingVolumesArray.items);
   //     })
   //     .catch((error) => console.log(error.message));
   // }

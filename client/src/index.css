@@ -58,6 +58,17 @@ button:active {
 
 .navBarContainer a {
   text-decoration: none;
+  color: #333;
+}
+
+.navBarContainer a:hover {
+  /* font-weight: bold; */
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.navBarContainer a:visited {
+  color: #333;
 }
 
 /* HEADER ------------------------------------------------------------ */
@@ -193,6 +204,18 @@ footer {
   font-style: italic;
 }
 
+.modifiedToast {
+  background-color: rgb(243, 200, 200) !important;
+  color: rgb(187, 70, 88) !important;
+  /* font-style: italic; */
+  border: 1px solid maroon;
+  /* border-radius: 25px !important; */
+  padding: 1em !important;
+  /* font-weight: bold; */
+  width: 450px;
+  /* border-radius: 20px; */
+}
+
 /* SEARCHED BOOK LIST (CONTAINER) ------------------------------------------------------------ */
 .searchedBookCollectionContainer {
   display: flex;
@@ -255,7 +278,8 @@ footer {
   height: 10rem;
 }
 
-.searchedBookButtonDiv {
+.searchedBookButtonDiv,
+.bookTileIconDiv {
   display: flex;
   justify-content: right;
   width: 100%;
@@ -265,7 +289,8 @@ footer {
   right: 0;
 }
 
-.reviewBtn {
+.icon,
+.bookTileIcon {
   margin: 0.5em;
   padding: 0.1em;
   border-radius: 100%;
@@ -274,7 +299,7 @@ footer {
   font-size: 1.2em;
 }
 
-.reviewBtn:hover {
+.icon:hover {
   background: none;
   color: maroon;
 }
@@ -304,6 +329,7 @@ footer {
   transition: transform 300ms ease 100ms;
   max-width: 8rem;
   height: 12rem;
+  position: relative;
 }
 
 .bookTile:hover ~ .bookTile {
@@ -315,13 +341,24 @@ footer {
 }
 
 .bookTileImage {
-  width: 100%;
-  max-height: 100%;
+  width: 8rem;
+  height: 12rem;
 }
 
 .categoryTitle {
   margin: 0;
   padding: 0;
+}
+
+.bookTileIconDiv {
+  /* background: none; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bookTileIcon.trash {
+  color: tomato;
 }
 
 /* BOOKCARD 
@@ -407,4 +444,9 @@ footer {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+}
+
+/* COLOR VARIABLES ------------------------------------------------- */
+:root {
+  --toastify-toast-background: red !important;
 }

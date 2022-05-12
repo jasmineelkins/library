@@ -17,13 +17,15 @@ function BookSearchResults({
   //     });
   //   }
 
-  const filteredBooks = bookList.filter((book) => book.volumeInfo.imageLinks);
+  const filteredBooks = bookList.filter(
+    (APIbook) => APIbook.volumeInfo.imageLinks
+  );
 
-  const booksToDisplay = filteredBooks.map((book) => {
+  const booksToDisplay = filteredBooks.map((APIbook) => {
     return (
       <SearchedBookCard
-        key={book.etag}
-        book={book}
+        key={APIbook.etag}
+        APIbook={APIbook}
         setUserBooksList={setUserBooksList}
         userBooksList={userBooksList}
         user={user}

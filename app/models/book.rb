@@ -7,7 +7,7 @@ class Book < ApplicationRecord
 
   validates :image, :title, presence: true
 
-  def status
-    reviews ? reviews.first.status : null
-  end
+  # def status
+  #   reviews ? reviews.first.status : null
+  # end
 end

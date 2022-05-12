@@ -17,6 +17,8 @@ function BookSearch({
 }) {
   const [searchSubmitted, setSearchSubmitted] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("Want to Read");
+
+  // notify function triggers Toast:
   const notify = (title) => toast(`${title} was added to ${selectedStatus}`);
 
   //   GET list of books by subject:
@@ -30,9 +32,9 @@ function BookSearch({
       `https://www.googleapis.com/books/v1/volumes?q=intitle:${userInput}&maxResults=20`
     )
       .then((res) => res.json())
-      .then((objectContainingVolumeArray) => {
-        console.log(objectContainingVolumeArray.items);
-        setBookList(objectContainingVolumeArray.items);
+      .then((objectContainingVolumesArray) => {
+        console.log(objectContainingVolumesArray.items);
+        setBookList(objectContainingVolumesArray.items);
         setSearchSubmitted(true);
       })
       .catch((error) => console.log(error.message));
@@ -75,7 +77,7 @@ function BookSearch({
       />
 
       {/* <button onClick={notify}>Notify!</button> */}
-      <ToastContainer position="bottom-center" />
+      <ToastContainer position="bottom-center" toastClassName="modifiedToast" />
       {/* <Toast selectedStatus={selectedStatus} position="bottom-right" /> */}
     </div>
   );
