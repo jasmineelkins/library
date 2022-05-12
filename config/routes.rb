@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :shelves
   resources :books
 
-  resources :users, only: %i[index create show] do
+  resources :users, only: %i[index create show update] do
     resources :books, only: %i[show index]
     resources :reviews, only: %i[index show create]
   end

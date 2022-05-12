@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import BookTile from "./BookTile";
-
-//******************* NEW ************************
+import Input from "./Input";
 
 function UserBooksList({ userBooksList, setUserBooksList, user }) {
   // GET all books
@@ -36,7 +35,7 @@ function UserBooksList({ userBooksList, setUserBooksList, user }) {
 
   // render user's Currently Reading
   const userCurrentlyReading = userBooksList
-    .filter((book) => book.reviews[0].status === "Currently Reading")
+    .filter((book) => book.reviews[0]?.status === "Currently Reading")
     .map((book) => (
       <BookTile
         key={book.id}
@@ -47,19 +46,61 @@ function UserBooksList({ userBooksList, setUserBooksList, user }) {
     ));
   // render user's Currently Reading
   const userWantToRead = userBooksList
-    .filter((book) => book.reviews[0].status === "Want to Read")
+    .filter((book) => book.reviews[0]?.status === "Want to Read")
     .map((book) => <BookTile key={book.id} book={book} />);
   // render user's Currently Reading
   const userHaveRead = userBooksList
-    .filter((book) => book.reviews[0].status === "Read")
+    .filter((book) => book.reviews[0]?.status === "Read")
     .map((book) => <BookTile key={book.id} book={book} />);
 
   // const testList = userBooksList.map((book) => console.log(book.status));
 
+  //   // import GoodReads Books CSV:
+  //   function handleChange(event) {
+  //     // looking for uploaded file in 'files' attribute (array). select first:
+  //     this.setState({
+  //       csv: event.target.files[0]
+  //     })
+
+  //     // once you have the file, need to make POST request to back end:
+  //     // first, create instance of FormData & append file
+  //     let formData = new FormData();
+  //       formData.append('file', csv)
+
+  //       // format POST request:
+
+  //       let options = {
+  //         method: 'POST',
+  //         headers: {"Authorization": localStorage.getItem("token")},
+  //         body: formData
+  //       }
+
+  //       fetch(`http://localhost:3000/api/v1/csvs`, options)
+  //       .then(resp => resp.json())
+  //       .then(result => {
+  // alert(result.message)
+  // })
+  // }
+
   return (
     <>
       <h2>My Books</h2>
-      {/* <div className="userBookCollectionContainer">{userBooksToDisplay}</div> */}
+
+      <Input />
+
+      {/* <Input
+        type="file"
+        ref={(input) => {
+          this.filesInput = input;
+        }}
+        name="file"
+        icon="file text outline"
+        iconPosition="left"
+        label="Upload CSV"
+        labelPosition="right"
+        placeholder="UploadCSV..."
+        onChange={this.handleChange}
+      /> */}
 
       <h3>Currently Reading</h3>
       <div className="userBookCollectionContainer">{userCurrentlyReading}</div>

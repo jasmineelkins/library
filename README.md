@@ -55,3 +55,5 @@ LEARNINGS:
 
 CREDITS:
 React Toastify: https://www.npmjs.com/package/react-toastify
+
+Importing CSV to React tutorial: https://dev.to/pankod/how-to-import-csv-file-with-react-4pj2

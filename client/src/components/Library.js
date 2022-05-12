@@ -33,7 +33,7 @@ function Library({ clickedBook, setClickedBook }) {
     fetch("https://www.googleapis.com/books/v1/volumes?q=subject:fiction")
       .then((res) => res.json())
       .then((objectContainingFictionVolumeArray) => {
-        console.log("Fiction list: ", objectContainingFictionVolumeArray.items);
+        // console.log("Fiction list: ", objectContainingFictionVolumeArray.items);
         setFictionList(objectContainingFictionVolumeArray.items);
       });
   }, []);
@@ -43,7 +43,7 @@ function Library({ clickedBook, setClickedBook }) {
     fetch("https://www.googleapis.com/books/v1/volumes?q=subject:history")
       .then((res) => res.json())
       .then((objectContainingHistoryVolumeArray) => {
-        console.log("History list: ", objectContainingHistoryVolumeArray.items);
+        // console.log("History list: ", objectContainingHistoryVolumeArray.items);
         setHistoryList(objectContainingHistoryVolumeArray.items);
       });
   }, []);
@@ -53,10 +53,10 @@ function Library({ clickedBook, setClickedBook }) {
     fetch("https://www.googleapis.com/books/v1/volumes?q=subject:nonfiction")
       .then((res) => res.json())
       .then((objectContainingNonFictionVolumeArray) => {
-        console.log(
-          "Non-Fiction list: ",
-          objectContainingNonFictionVolumeArray.items
-        );
+        // console.log(
+        //   "Non-Fiction list: ",
+        //   objectContainingNonFictionVolumeArray.items
+        // );
         setnonfiction(objectContainingNonFictionVolumeArray.items);
       });
   }, []);
@@ -68,10 +68,10 @@ function Library({ clickedBook, setClickedBook }) {
     )
       .then((res) => res.json())
       .then((objectContainingYAFictionVolumeArray) => {
-        console.log(
-          "YA Fiction list: ",
-          objectContainingYAFictionVolumeArray.items
-        );
+        // console.log(
+        //   "YA Fiction list: ",
+        //   objectContainingYAFictionVolumeArray.items
+        // );
         setYoungAdultFiction(objectContainingYAFictionVolumeArray.items);
       });
   }, []);

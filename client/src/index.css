@@ -444,9 +444,42 @@ footer {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  gap: 5px;
 }
+
+.avatar {
+  height: 100px;
+  border: 2px solid black;
+  border-radius: 100%;
+  padding: 1em;
+  margin: 1em;
+}
+
+.dateJoined {
+  margin-bottom: 3em;
+  font-style: italic;
+  font-size: smaller;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: left;
+  margin: 5px;
+}
+
+/* .inputContainer input {
+  align-items: right;
+} */
 
 /* COLOR VARIABLES ------------------------------------------------- */
 :root {
   --toastify-toast-background: red !important;
+}
+
+/* MEDIA QUERIES --------------------------------------------------- */
+@media only screen and (max-width: 900px) {
+  .profileInnerDiv {
+    width: 50vw;
+  }
 }
