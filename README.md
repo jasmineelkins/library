@@ -14,6 +14,7 @@ TO-DO LIST:
 
 - user's book collections also have slider buttons & info modals
 
+- _DONE_ user can update profile
 - _DONE_ deleting a book automatically re-renders the book list
 - _DONE_ left/right buttons to scroll collections
 - _DONE_ clicking a book opens modal with more info

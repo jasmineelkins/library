@@ -1,18 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-function Profile({ user }) {
+function Profile({ user, setUser }) {
   const defaultProfileForm = {
     name: user.name,
     username: user.username,
     about: user.about,
+    image:
+      "https://res.cloudinary.com/dbl7owtdh/image/upload/v1652387229/cartoon-cat-g3531c4ee5_1920_pwmyxe.png",
   };
-
-  // console.log("user", user);
 
   const [editModeOff, setEditModeOff] = useState(true);
   const [profileFormData, setProfileFormData] = useState({
     defaultProfileForm,
   });
+
+  useEffect(() => {
+    fetch(`users/${user.id}`)
+      .then((res) => res.json())
+      .then((currentUserObj) => {
+        // console.log("current user: ", currentUserObj);
+        setUser(currentUserObj);
+        setProfileFormData(defaultProfileForm);
+      })
+      .catch((error) => console.log(error.message));
+  }, [setUser, user.id]);
 
   function handleClick(e) {
     // click to toggle form
@@ -29,22 +40,32 @@ function Profile({ user }) {
     // console.log(profileFormData);
 
     // UPDATE user info
-    fetch(`/user/${user.id}`, {
-      method: "UPDATE",
+    fetch(`/users/${user.id}`, {
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
       body: JSON.stringify({
-        profileFormData,
+        name: profileFormData.name,
+        username: profileFormData.username,
+        about: profileFormData.about,
       }),
     })
       .then((res) => res.json())
-      .then((updatedUserObj) => console.log("Updated user: ", updatedUserObj))
+      .then((updatedUserObj) => {
+        // console.log("Updated user: ", updatedUserObj);
+        setUser(updatedUserObj);
+        setProfileFormData(updatedUserObj);
+      })
       .catch((error) => console.log(error.message));
 
-    // reset form
-    // setProfileFormData(defaultProfileForm)
+    // reset form to show user data
+    setProfileFormData({
+      name: profileFormData.name,
+      username: profileFormData.username,
+      about: profileFormData.about,
+    });
 
     //turn off edit mode - back to profile, not form
     setEditModeOff(true);
@@ -79,7 +100,7 @@ function Profile({ user }) {
           <div className="profileRow about">
             <span className="profileLabel about">About</span>
             <div className="rightSpanDiv">
-              <span className="profileSpan about"></span>
+              <span className="profileSpan about">{user.about}</span>
             </div>
           </div>
 

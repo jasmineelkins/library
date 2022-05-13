@@ -681,6 +681,11 @@ footer a {
   margin-bottom: 0.5em;
 }
 
+.formRow textarea {
+  font-family: "Jost", Verdana, sans-serif;
+  padding: 0.5em;
+}
+
 .avatar {
   height: 100px;
   border: 2px solid black;

@@ -36,15 +36,31 @@ class UsersController < ApplicationController
 
   # UPDATE '/user/:id'
   def update
-    user = User.find_by(id: params[:user_id])
-    user.update!(user_params)
-    render json: user
+    # get current user
+    current_user = User.find_by(id: session[:user_id])
+
+    if current_user
+      current_user.update!(user_params)
+      render json: current_user
+    else
+      render json: {
+               error: 'Something went wrong',
+             },
+             status: :internal_server_error
+    end
   end
 
   private
 
   def user_params
-    params.permit(:username, :password, :password_confirmation, :name)
+    params.permit(
+      :username,
+      :password,
+      :password_confirmation,
+      :name,
+      :about,
+      :image,
+    )
   end
 
   def render_invalid(invalid)
