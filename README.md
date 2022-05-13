@@ -13,8 +13,7 @@ PROJECT REQUIREMENTS:
 TO-DO LIST:
 
 - user's book collections also have slider buttons & info modals
-- user can submit an actual review & rating
-- don't show books on Home without images
+- don't show books on Home without images _KRIS THURSDAY_
 - deleting a book automatically re-renders the book list _JAS THURSDAY_
 
 - _DONE_ left/right buttons to scroll collections
@@ -38,15 +37,16 @@ TO-DO LIST:
 
 LITTLE DETAILS TO FIX....
 
-- clear book search results
+- clear book search results in between page loads?
 - home page: signup/login. clicking signup pops up form - modal maybe ?
-- 'passwords don't match' - write a better error message
+- _DONE_ 'passwords don't match' better error message
 - _DONE_ add a Profile & link to NavBar
 - _DONE_ add name to sign up for & welcome message
 - _DONE_ format form inputs & labels
 
 STRETCH GOALS:
 
+- user can submit an actual review & rating
 - user can import goodreads data _JAS THURSDAY_
 - recommendations based on genre
 - user can add custom-named shelves

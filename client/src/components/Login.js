@@ -46,6 +46,7 @@ function Login({ user, setUser }) {
         console.log("Logged in user: ", userObj);
 
         if (userObj.username) {
+          navigate("/");
           setUser(userObj);
           setError(null);
         } else {
@@ -57,8 +58,6 @@ function Login({ user, setUser }) {
 
           setUser(null);
         }
-
-        navigate("/");
       })
       .catch((error) => console.log(error.message));
 
@@ -72,7 +71,7 @@ function Login({ user, setUser }) {
     <div className="authFormContainer">
       <form onSubmit={(e) => handleSubmit(e)} className="authForm">
         <div className="formRow">
-          <label>Username:</label>
+          <label>Username</label>
           <input
             type="text"
             name="username"
@@ -82,7 +81,7 @@ function Login({ user, setUser }) {
         </div>
 
         <div className="formRow">
-          <label>Password:</label>
+          <label>Password</label>
           <input
             type={passwordShown ? "text" : "password"}
             name="password"
@@ -91,11 +90,14 @@ function Login({ user, setUser }) {
           ></input>
         </div>
 
-        <button onClick={(e) => togglePassword(e)}>{passwordShownIcon}</button>
+        <div className="formButtonDiv">
+          <button onClick={(e) => togglePassword(e)}>
+            {passwordShownIcon}
+          </button>
+          <button type="submit">Submit</button>
+        </div>
 
         <span className="errorMessage">{errorsToDisplay}</span>
-
-        <button type="submit">Submit</button>
       </form>
     </div>
   );

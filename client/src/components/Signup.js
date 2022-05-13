@@ -74,7 +74,7 @@ function Signup({ user, setUser }) {
     <div className="authFormContainer">
       <form onSubmit={(e) => handleSubmit(e)} className="authForm">
         <div className="formRow">
-          <label>Name:</label>
+          <label>Name</label>
           <input
             type="text"
             name="name"
@@ -84,7 +84,7 @@ function Signup({ user, setUser }) {
         </div>
 
         <div className="formRow">
-          <label>Username:</label>
+          <label>Username</label>
           <input
             type="text"
             name="username"
@@ -94,7 +94,7 @@ function Signup({ user, setUser }) {
         </div>
 
         <div className="formRow">
-          <label>Password:</label>
+          <label>Password</label>
           <input
             type={passwordShown ? "text" : "password"}
             name="password"
@@ -104,7 +104,7 @@ function Signup({ user, setUser }) {
         </div>
 
         <div className="formRow">
-          <label>Confirm password:</label>
+          <label>Confirm password</label>
           <input
             type={passwordShown ? "text" : "password"}
             name="password_confirmation"
@@ -113,11 +113,14 @@ function Signup({ user, setUser }) {
           ></input>
         </div>
 
-        <button onClick={(e) => togglePassword(e)}>{passwordShownIcon}</button>
+        <div className="formButtonDiv">
+          <button onClick={(e) => togglePassword(e)}>
+            {passwordShownIcon}
+          </button>
+          <button type="submit">Submit</button>
+        </div>
 
         <span className="errorMessage">{errorsToDisplay}</span>
-
-        <button type="submit">Submit</button>
       </form>
     </div>
   );
