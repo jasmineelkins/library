@@ -45,6 +45,7 @@ LITTLE DETAILS TO FIX....
 
 STRETCH GOALS:
 
+- user can update book status through dropdown on modal
 - user can submit an actual review & rating
 - user can import goodreads data
 - recommendations based on genre
