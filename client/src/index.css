@@ -1,5 +1,8 @@
 /* FONTS ---------------------------------------------------------- */
 @import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Fredoka+One&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@200;400&family=Poppins&display=swap');
+
+
 
 /* GENERAL --------------------------------------------------------- */
 * {
@@ -130,16 +133,37 @@ header h1 {
   font-size: smaller;
 }
 
+
+.authBarContainer a {
+  text-decoration: none;
+  color: #333;
+}
+
+.authBarContainer a:hover {
+  /* font-weight: bold; */
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.authBarContainer a:visited {
+  color: #333;
+}
+
 /* HOME ------------------------------------------------------------ */
 .homeContainer {
   text-align: center;
   margin: 3em;
+  font-family: 'Jost', sans-serif;
+  letter-spacing: .1em;
 }
 
 /* LIBRARY / HOME  ------------------------------------------------------------ */
 .booksContainer h2 {
   margin-top: 2em;
   text-align: left;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.1rem;
+  background-color: rgb(255, 171, 157);
 }
 
 /* FOOTER ------------------------------------------------------------ */
@@ -165,6 +189,11 @@ footer {
   padding: 25px 0;
   overflow-y: hidden;
   overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+
+.scrollBtn {
+  scroll-behavior: smooth;
 }
 
 .bookCollectionContainer:hover .bookCard {
@@ -356,18 +385,18 @@ footer {
   flex: 0 0 17%;
   text-align: center;
   transition: transform 400ms ease 100ms;
-  width: 20rem;
-  height: 20rem;
-  width: 100%;
+  /* width: 20rem;
+  height: 20rem; */
 }
 
 .bookImgContainer {
-  width: 20rem;
+  width: 12rem;
   height: 18rem;
 }
 
 .bookCard:hover ~ .bookCard {
-  transform: translateX(25%);
+  transform: translateX(10%);
+
 }
 
 .bookCard:hover {
@@ -375,9 +404,9 @@ footer {
 }
 
 .bookImg {
-  width: 90%;
+  width: 95%;
   height: 100%;
-  object-fit: contain;
+  /* object-fit: contain; */
 }
 
 /* MODAL - SHOW BOOK DETAILS 
@@ -419,8 +448,13 @@ footer {
   padding: 5px;
 }
 
-.closeCircleSize {
-  size: lg;
+.closeIcon {
+  margin: 0.5em;
+  padding: 0.1em;
+  border-radius: 100%;
+  color: rgb(255, 171, 157);
+  background: none;
+  font-size: 1.2em;
 }
 
 .closeDiv {
@@ -462,11 +496,6 @@ footer {
   color:white;
   text-align: justify;
 }
-
-.showMoreButton {
-  align-content: center;
-}
-
 
 /* PROFILE -------------------------------------------------------------------- */
 .profileContainer {

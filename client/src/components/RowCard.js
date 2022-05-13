@@ -11,7 +11,7 @@ function RowCard({book, setClickedBook }) {
   return (
       <>
           <div className="bookCard">
-            { book.volumeInfo.imageLinks === undefined ? <span>undefined image links</span>
+            { book.volumeInfo.imageLinks === undefined ? null
             :<div className="bookImgContainer"><img src={book.volumeInfo.imageLinks.thumbnail} alt={title} className="bookImg" onClick={displayBookDetails}/></div> }
           </div>
       

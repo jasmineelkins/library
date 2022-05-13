@@ -9,6 +9,9 @@ function Library({ clickedBook, setClickedBook }) {
   const [historyList, setHistoryList] = useState([]);
   const [nonfictionList, setnonfiction] = useState([]);
   const [youngAdultFictionList, setYoungAdultFiction] = useState([]);
+  const [cookBookList, setCookBookList] = useState([]);
+  const [scienceFictionList, setScienceFictionList] = useState([]);
+  const [childrenBookList, setChildrenBookList] = useState([]);
 
   //   GET list of books by subject
   //   https://www.googleapis.com/books/v1/volumes?q=subject:fiction
@@ -76,6 +79,48 @@ function Library({ clickedBook, setClickedBook }) {
       });
   }, []);
 
+    // GRABBING LIST OF OF BOOKS BY COOKING
+    useEffect(() => {
+      fetch(
+        "https://www.googleapis.com/books/v1/volumes?q=subject:cookbook"
+      )
+        .then((res) => res.json())
+        .then((objectContainingCookbookVolumeArray) => {
+        setCookBookList(objectContainingCookbookVolumeArray.items);
+        });
+    }, []);
+
+    // GRABBING LIST OF OF BOOKS BY SCIENCE FICTION
+    useEffect(() => {
+      fetch(
+        "https://www.googleapis.com/books/v1/volumes?q=subject:science&fiction"
+      )
+        .then((res) => res.json())
+        .then((objectContainingScienceFictionVolumeArray) => {
+        setScienceFictionList(objectContainingScienceFictionVolumeArray.items);
+        });
+    }, []);
+      
+    // GRABBING LIST OF BOOKS BY CHILDRENS BOOK
+    useEffect(() => {
+      fetch(
+          "https://www.googleapis.com/books/v1/volumes?q=subject:children"
+        )
+          .then((res) => res.json())
+          .then((objectContainingChildrenVolumeArray) => {
+          setChildrenBookList(objectContainingChildrenVolumeArray.items);
+          });
+     }, []);
+
+     //NYT LIST OF BOOKS TEST
+    useEffect(() => {
+      fetch(
+        'https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key=IZayAdS1oNAENMGciuxbukqhaixXSPdd'
+      )
+      .then((res) => res.json())
+      .then((nytlist) => console.log(nytlist))
+    },[])
+
   return (
     <>
       <div className="booksContainer">
@@ -91,9 +136,31 @@ function Library({ clickedBook, setClickedBook }) {
           clickedBook={clickedBook}
           setClickedBook={setClickedBook}
         ></Row>
+
         <Row 
           categoryTitle="Nonfiction" 
           fetchedBooks={nonfictionList}
+          clickedBook={clickedBook}
+          setClickedBook={setClickedBook}
+        ></Row>
+
+        <Row
+          categoryTitle="Cookbooks"
+          fetchedBooks={cookBookList}
+          clickedBook={clickedBook}
+          setClickedBook={setClickedBook}
+        ></Row>
+
+        <Row
+          categoryTitle="Children"
+          fetchedBooks={childrenBookList}
+          clickedBook={clickedBook}
+          setClickedBook={setClickedBook}
+        ></Row>
+
+        <Row
+          categoryTitle="Science Fiction"
+          fetchedBooks={scienceFictionList}
           clickedBook={clickedBook}
           setClickedBook={setClickedBook}
         ></Row>
@@ -104,6 +171,10 @@ function Library({ clickedBook, setClickedBook }) {
           clickedBook={clickedBook}
           setClickedBook={setClickedBook}
         ></Row>
+
+
+
+
       </div>
     </>
   );

@@ -2,8 +2,6 @@ import React, { useRef } from "react";
 import RowCard from "./RowCard";
 import ModalShowBookDetail from "./ModalShowBookDetail";
 import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from "react-icons/ai";
-// import AliceCarousel from 'react-alice-carousel';
-// import 'react-alice-carousel/lib/alice-carousel.css';
 
 
 function Row({ fetchedBooks, categoryTitle, setClickedBook, clickedBook }) {
@@ -16,11 +14,11 @@ function Row({ fetchedBooks, categoryTitle, setClickedBook, clickedBook }) {
   }
 
   function moveScrollToRight () {
-    scroll.current.scrollLeft += 100
+    scroll.current.scrollLeft += 350
   }
 
   function moveScrollToLeft () {
-    scroll.current.scrollLeft -= 100
+    scroll.current.scrollLeft -= 350
   }
 
   return (
@@ -41,8 +39,8 @@ function Row({ fetchedBooks, categoryTitle, setClickedBook, clickedBook }) {
 
       {clickedBook ? <ModalShowBookDetail closeModal={closeModal} clickedBook={clickedBook} /> : null}
 
-      <button className="leftButton" onClick={moveScrollToLeft}><AiOutlineDoubleLeft/></button>
-      <button className="leftButton" onClick={moveScrollToRight}><AiOutlineDoubleRight/></button>
+      <button className="scrollBtn" onClick={moveScrollToLeft}><AiOutlineDoubleLeft/></button>
+      <button className="scrollBtn" onClick={moveScrollToRight}><AiOutlineDoubleRight/></button>
 
     </>
   );
