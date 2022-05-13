@@ -15,7 +15,7 @@ function Profile({ user, setUser }) {
   });
 
   useEffect(() => {
-    fetch(`users/${user.id}`)
+    fetch(`/users/${user.id}`)
       .then((res) => res.json())
       .then((currentUserObj) => {
         // console.log("current user: ", currentUserObj);
