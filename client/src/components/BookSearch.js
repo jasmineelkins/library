@@ -52,6 +52,7 @@ function BookSearch({
   }
   return (
     <div className="bookSearchContainer">
+      <h2>Search</h2>
       <div className="bookSearchFormContainer">
         <form onSubmit={(e) => handleSubmit(e)}>
           <input

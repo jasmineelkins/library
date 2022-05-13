@@ -79,47 +79,43 @@ function Library({ clickedBook, setClickedBook }) {
       });
   }, []);
 
-    // GRABBING LIST OF OF BOOKS BY COOKING
-    useEffect(() => {
-      fetch(
-        "https://www.googleapis.com/books/v1/volumes?q=subject:cookbook"
-      )
-        .then((res) => res.json())
-        .then((objectContainingCookbookVolumeArray) => {
-        setCookBookList(objectContainingCookbookVolumeArray.items);
-        });
-    }, []);
-
-    // GRABBING LIST OF OF BOOKS BY SCIENCE FICTION
-    useEffect(() => {
-      fetch(
-        "https://www.googleapis.com/books/v1/volumes?q=subject:science&fiction"
-      )
-        .then((res) => res.json())
-        .then((objectContainingScienceFictionVolumeArray) => {
-        setScienceFictionList(objectContainingScienceFictionVolumeArray.items);
-        });
-    }, []);
-      
-    // GRABBING LIST OF BOOKS BY CHILDRENS BOOK
-    useEffect(() => {
-      fetch(
-          "https://www.googleapis.com/books/v1/volumes?q=subject:children"
-        )
-          .then((res) => res.json())
-          .then((objectContainingChildrenVolumeArray) => {
-          setChildrenBookList(objectContainingChildrenVolumeArray.items);
-          });
-     }, []);
-
-     //NYT LIST OF BOOKS TEST
-    useEffect(() => {
-      fetch(
-        'https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key=IZayAdS1oNAENMGciuxbukqhaixXSPdd'
-      )
+  // GRABBING LIST OF OF BOOKS BY COOKING
+  useEffect(() => {
+    fetch("https://www.googleapis.com/books/v1/volumes?q=subject:cookbook")
       .then((res) => res.json())
-      .then((nytlist) => console.log(nytlist))
-    },[])
+      .then((objectContainingCookbookVolumeArray) => {
+        setCookBookList(objectContainingCookbookVolumeArray.items);
+      });
+  }, []);
+
+  // GRABBING LIST OF OF BOOKS BY SCIENCE FICTION
+  useEffect(() => {
+    fetch(
+      "https://www.googleapis.com/books/v1/volumes?q=subject:science&fiction"
+    )
+      .then((res) => res.json())
+      .then((objectContainingScienceFictionVolumeArray) => {
+        setScienceFictionList(objectContainingScienceFictionVolumeArray.items);
+      });
+  }, []);
+
+  // GRABBING LIST OF BOOKS BY CHILDRENS BOOK
+  useEffect(() => {
+    fetch("https://www.googleapis.com/books/v1/volumes?q=subject:children")
+      .then((res) => res.json())
+      .then((objectContainingChildrenVolumeArray) => {
+        setChildrenBookList(objectContainingChildrenVolumeArray.items);
+      });
+  }, []);
+
+  //NYT LIST OF BOOKS TEST
+  // useEffect(() => {
+  //   fetch(
+  //     'https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key='
+  //   )
+  //   .then((res) => res.json())
+  //   .then((nytlist) => console.log(nytlist))
+  // },[])
 
   return (
     <>
@@ -130,15 +126,15 @@ function Library({ clickedBook, setClickedBook }) {
           clickedBook={clickedBook}
           setClickedBook={setClickedBook}
         ></Row>
-        <Row 
-          categoryTitle="History" 
+        <Row
+          categoryTitle="History"
           fetchedBooks={historyList}
           clickedBook={clickedBook}
           setClickedBook={setClickedBook}
         ></Row>
 
-        <Row 
-          categoryTitle="Nonfiction" 
+        <Row
+          categoryTitle="Nonfiction"
           fetchedBooks={nonfictionList}
           clickedBook={clickedBook}
           setClickedBook={setClickedBook}
@@ -171,10 +167,6 @@ function Library({ clickedBook, setClickedBook }) {
           clickedBook={clickedBook}
           setClickedBook={setClickedBook}
         ></Row>
-
-
-
-
       </div>
     </>
   );
