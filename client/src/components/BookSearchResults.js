@@ -9,19 +9,12 @@ function BookSearchResults({
   selectedStatus,
   onBookAdded,
 }) {
-  //   let booksToDisplay;
-
-  //   if (bookList && bookList !== []) {
-  //     booksToDisplay = bookList.map((book) => {
-  //       return <SearchedBookCard key={book.etag} book={book} />;
-  //     });
-  //   }
-
   const filteredBooks = bookList.filter(
     (APIbook) => APIbook.volumeInfo.imageLinks
   );
 
   const booksToDisplay = filteredBooks.map((APIbook) => {
+    // console.log("each API book author: ", APIbook.volumeInfo.authors);
     return (
       <SearchedBookCard
         key={APIbook.etag}

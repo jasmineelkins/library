@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import BookSearchResults from "./BookSearchResults";
 import QuickAddStatus from "./QuickAddStatus";
-// import Toast from "./toast/Toast";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -24,6 +22,17 @@ function BookSearch({
   //   GET list of books by subject:
   //   https://www.googleapis.com/books/v1/volumes?q=subject:fiction
 
+  // on component load fetch User's books & update User Books List
+  useEffect(() => {
+    fetch(`/users/${user.id}/books`)
+      .then((res) => res.json())
+      .then((listOfUserBooks) => {
+        console.log("User's Book List: ", listOfUserBooks);
+        setUserBooksList(listOfUserBooks);
+      })
+      .catch((error) => console.log(error.message));
+  }, []);
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -33,13 +42,12 @@ function BookSearch({
     )
       .then((res) => res.json())
       .then((objectContainingVolumesArray) => {
-        console.log(objectContainingVolumesArray.items);
+        console.log("API search results: ", objectContainingVolumesArray.items);
         setBookList(objectContainingVolumesArray.items);
         setSearchSubmitted(true);
       })
       .catch((error) => console.log(error.message));
 
-    // reset input
     setUserInput("");
   }
   return (
@@ -76,9 +84,7 @@ function BookSearch({
         onBookAdded={notify}
       />
 
-      {/* <button onClick={notify}>Notify!</button> */}
       <ToastContainer position="bottom-center" toastClassName="modifiedToast" />
-      {/* <Toast selectedStatus={selectedStatus} position="bottom-right" /> */}
     </div>
   );
 }

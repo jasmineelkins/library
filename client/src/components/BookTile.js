@@ -26,14 +26,15 @@ function BookTile({ book, userBooksList, setUserBooksList }) {
   }
 
   function handleClick() {
-    fetch(`/books/${book.id}`, {
+    const { id } = book;
+    fetch(`/books/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((data) => {
         console.log("DELETED", data);
         const userBooksMinusDeleted = userBooksList.filter(
-          (book) => book.id !== `${book.id}`
+          (book) => book.id !== id
         );
         setUserBooksList(userBooksMinusDeleted);
       })

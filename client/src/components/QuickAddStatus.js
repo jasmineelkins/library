@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function QuickAddStatus({ setSelectedStatus }) {
   function handleOptionSelection(e) {
-    console.log("SELECTION: ", e.target.value);
+    // console.log("SELECTION: ", e.target.value);
     setSelectedStatus(e.target.value);
   }
   return (

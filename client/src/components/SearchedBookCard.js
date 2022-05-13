@@ -22,11 +22,14 @@ function SearchedBookCard({
   const [selectedBook, setSelectedBook] = useState({});
 
   function addBookToDatabase() {
-    const { title, authors, description, pageCount } = APIbook.volumeInfo;
+    const { title, description, pageCount } = APIbook.volumeInfo;
+    const [authors] = APIbook.volumeInfo.authors;
+
+    // UBL is empty because it renders only on My Books component..not Search
+    console.log("User Book List before adding new APIbook: ", userBooksList);
 
     fetch(`/books`, {
-      // adds book to booklist
-      // need to attach to user, shelf, review
+      // adds book to User Booklist
       method: "POST",
       headers: {
         "Content-Type": "application/json",
