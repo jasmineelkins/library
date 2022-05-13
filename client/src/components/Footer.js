@@ -12,7 +12,7 @@ function Footer(props) {
             target="_blank"
             rel="noreferrer"
           >
-            <FaGithub />
+            <FaGithub className="footerIcon" />
           </a>{" "}
           & Kristen Cadacio{" "}
           <a
@@ -20,7 +20,7 @@ function Footer(props) {
             target="_blank"
             rel="noreferrer"
           >
-            <FaGithub />
+            <FaGithub className="footerIcon" />
           </a>{" "}
           || May 2022
         </span>

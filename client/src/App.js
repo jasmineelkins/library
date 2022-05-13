@@ -40,9 +40,17 @@ function App() {
     <div className="pageContainer">
       <div className="contentWrap">
         <BrowserRouter>
-          <Navbar user={user} setUser={setUser} />
-          <Header />
-          <AuthBar user={user} setUser={setUser} />
+          {user ? (
+            <>
+              <Navbar user={user} setUser={setUser} />
+              <Header />
+            </>
+          ) : (
+            <>
+              <Header />
+              <AuthBar user={user} setUser={setUser} />
+            </>
+          )}
 
           <Routes>
             {user ? (
@@ -64,6 +72,17 @@ function App() {
 
                 <Route
                   path="/"
+                  element={
+                    <UserBooksList
+                      userBooksList={userBooksList}
+                      setUserBooksList={setUserBooksList}
+                      user={user}
+                    />
+                  }
+                ></Route>
+
+                <Route
+                  path="/login"
                   element={
                     <UserBooksList
                       userBooksList={userBooksList}
