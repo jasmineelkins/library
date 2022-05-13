@@ -17,6 +17,8 @@ function BookTile({ book, userBooksList, setUserBooksList }) {
 
   let bookStatusIcon;
 
+  // console.log("confirm/deny", userBooksList);
+
   if (book.reviews[0].status === "Currently Reading") {
     bookStatusIcon = <FaBookOpen />;
   } else if (book.reviews[0].status === "Want to Read") {
@@ -33,9 +35,12 @@ function BookTile({ book, userBooksList, setUserBooksList }) {
       .then((res) => res.json())
       .then((data) => {
         console.log("DELETED", data);
+        console.log("UBL", userBooksList);
         const userBooksMinusDeleted = userBooksList.filter(
           (book) => book.id !== id
         );
+
+        console.log(userBooksMinusDeleted);
         setUserBooksList(userBooksMinusDeleted);
       })
       .catch((error) => console.log(error.message));

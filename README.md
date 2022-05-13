@@ -13,9 +13,8 @@ PROJECT REQUIREMENTS:
 TO-DO LIST:
 
 - user's book collections also have slider buttons & info modals
-- don't show books on Home without images _KRIS THURSDAY_
-- deleting a book automatically re-renders the book list _JAS THURSDAY_
 
+- _DONE_ deleting a book automatically re-renders the book list
 - _DONE_ left/right buttons to scroll collections
 - _DONE_ clicking a book opens modal with more info
 - _DONE_ icon changes depending on shelf: plus(add to list), bookmark(want to), heart(read), book(currently)
@@ -47,7 +46,7 @@ LITTLE DETAILS TO FIX....
 STRETCH GOALS:
 
 - user can submit an actual review & rating
-- user can import goodreads data _JAS THURSDAY_
+- user can import goodreads data
 - recommendations based on genre
 - user can add custom-named shelves
 - pagination - show 10 results from API, click next to see 10 more

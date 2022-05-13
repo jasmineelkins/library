@@ -9,11 +9,11 @@ function BookSearchResults({
   selectedStatus,
   onBookAdded,
 }) {
-  const filteredBooks = bookList.filter(
+  const onlyBooksWithImages = bookList.filter(
     (APIbook) => APIbook.volumeInfo.imageLinks
   );
 
-  const booksToDisplay = filteredBooks.map((APIbook) => {
+  const booksToDisplay = onlyBooksWithImages.map((APIbook) => {
     // console.log("each API book author: ", APIbook.volumeInfo.authors);
     return (
       <SearchedBookCard

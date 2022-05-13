@@ -46,7 +46,6 @@ function SearchedBookCard({
     })
       .then((res) => res.json())
       .then((bookObj) => {
-        //   why doesn't added book have authors???
         console.log("Added book: ", bookObj);
         createBookReview(bookObj);
       })

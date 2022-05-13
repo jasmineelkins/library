@@ -64,21 +64,6 @@ function Library({ clickedBook, setClickedBook }) {
       });
   }, []);
 
-  // GRABBING LIST OF OF BOOKS BY ADULT FICTION
-  useEffect(() => {
-    fetch(
-      "https://www.googleapis.com/books/v1/volumes?q=subject:young&adult&fiction"
-    )
-      .then((res) => res.json())
-      .then((objectContainingYAFictionVolumeArray) => {
-        // console.log(
-        //   "YA Fiction list: ",
-        //   objectContainingYAFictionVolumeArray.items
-        // );
-        setYoungAdultFiction(objectContainingYAFictionVolumeArray.items);
-      });
-  }, []);
-
   // GRABBING LIST OF OF BOOKS BY COOKING
   useEffect(() => {
     fetch("https://www.googleapis.com/books/v1/volumes?q=subject:cookbook")
@@ -157,13 +142,6 @@ function Library({ clickedBook, setClickedBook }) {
         <Row
           categoryTitle="Science Fiction"
           fetchedBooks={scienceFictionList}
-          clickedBook={clickedBook}
-          setClickedBook={setClickedBook}
-        ></Row>
-
-        <Row
-          categoryTitle="Young Adult Fiction"
-          fetchedBooks={youngAdultFictionList}
           clickedBook={clickedBook}
           setClickedBook={setClickedBook}
         ></Row>

@@ -44,14 +44,30 @@ function UserBooksList({ userBooksList, setUserBooksList, user }) {
         setUserBooksList={setUserBooksList}
       />
     ));
+
   // render user's Currently Reading
   const userWantToRead = userBooksList
     .filter((book) => book.reviews[0]?.status === "Want to Read")
-    .map((book) => <BookTile key={book.id} book={book} />);
+    .map((book) => (
+      <BookTile
+        key={book.id}
+        book={book}
+        userBooksList={userBooksList}
+        setUserBooksList={setUserBooksList}
+      />
+    ));
+
   // render user's Currently Reading
   const userHaveRead = userBooksList
     .filter((book) => book.reviews[0]?.status === "Read")
-    .map((book) => <BookTile key={book.id} book={book} />);
+    .map((book) => (
+      <BookTile
+        key={book.id}
+        book={book}
+        userBooksList={userBooksList}
+        setUserBooksList={setUserBooksList}
+      />
+    ));
 
   // const testList = userBooksList.map((book) => console.log(book.status));
 
@@ -84,7 +100,9 @@ function UserBooksList({ userBooksList, setUserBooksList, user }) {
 
   return (
     <div className="userBooksListContainer">
-      <h2>My Books</h2>
+      <div className="userHeader">
+        <h2>My Books</h2>
+      </div>
 
       <h3>Currently Reading</h3>
       <div className="userBookCollectionContainer">{userCurrentlyReading}</div>

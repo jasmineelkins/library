@@ -62,15 +62,33 @@ function Profile({ user }) {
 
       {editModeOff ? (
         <div className="profileInnerDiv">
-          <span>Name: {user.name}</span>
-          <span>Username: {user.username}</span>
-          <span>About:</span>
+          <div className="profileRow">
+            <span className="profileLabel">Name</span>
+            <div className="rightSpanDiv">
+              <span className="profileSpan">{user.name}</span>
+            </div>
+          </div>
+
+          <div className="profileRow">
+            <span className="profileLabel">Username</span>
+            <div className="rightSpanDiv">
+              <span className="profileSpan">{user.username}</span>
+            </div>
+          </div>
+
+          <div className="profileRow about">
+            <span className="profileLabel about">About</span>
+            <div className="rightSpanDiv">
+              <span className="profileSpan about"></span>
+            </div>
+          </div>
+
           <button onClick={(e) => handleClick(e)}>Edit Profile</button>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="profileForm">
-          <div className="inputContainer">
-            <label>Name:</label>
+          <div className="formRow">
+            <label>Name</label>
             <input
               name="name"
               value={profileFormData.name}
@@ -78,8 +96,8 @@ function Profile({ user }) {
             ></input>
           </div>
 
-          <div className="inputContainer">
-            <label>Username:</label>
+          <div className="formRow">
+            <label>Username</label>
             <input
               name="username"
               value={profileFormData.username}
@@ -87,8 +105,8 @@ function Profile({ user }) {
             ></input>
           </div>
 
-          <div className="inputContainer">
-            <label>About:</label>
+          <div className="formRow">
+            <label>About</label>
             <textarea
               name="about"
               value={profileFormData.about}
