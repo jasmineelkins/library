@@ -20,6 +20,8 @@ function App() {
   const [userBooksList, setUserBooksList] = useState([]);
   const [clickedBook, setClickedBook] = useState(null);
 
+  const [userClickedBook, setUserClickedBook] = useState(null);
+
   // console.log("SPECIFIC BOOK'S ID/ETAG", clickedBook.etag)
 
   // AUTO LOGIN
@@ -77,6 +79,8 @@ function App() {
                       userBooksList={userBooksList}
                       setUserBooksList={setUserBooksList}
                       user={user}
+                      setUserClickedBook={setUserClickedBook}
+                      userClickedBook={userClickedBook}
                     />
                   }
                 ></Route>
@@ -88,6 +92,8 @@ function App() {
                       userBooksList={userBooksList}
                       setUserBooksList={setUserBooksList}
                       user={user}
+                      setUserClickedBook={setUserClickedBook}
+                      userClickedBook={userClickedBook}
                     />
                   }
                 ></Route>

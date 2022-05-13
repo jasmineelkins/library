@@ -12,7 +12,12 @@ import {
 import { MdRemoveCircle } from "react-icons/md";
 import { AiFillDelete } from "react-icons/ai";
 
-function BookTile({ book, userBooksList, setUserBooksList }) {
+function BookTile({
+  book,
+  userBooksList,
+  setUserBooksList,
+  setUserClickedBook,
+}) {
   const { title, authors, image, description, genre, pages } = book;
 
   let bookStatusIcon;
@@ -27,7 +32,13 @@ function BookTile({ book, userBooksList, setUserBooksList }) {
     bookStatusIcon = <FaRegHeart />;
   }
 
-  function handleClick() {
+  function displayBookDetails() {
+    setUserClickedBook(book);
+  }
+
+  function handleClick(e) {
+    e.stopPropagation();
+
     const { id } = book;
     fetch(`/books/${id}`, {
       method: "DELETE",
@@ -48,13 +59,13 @@ function BookTile({ book, userBooksList, setUserBooksList }) {
 
   return (
     <>
-      <div className="bookTile">
+      <div className="bookTile" onClick={displayBookDetails}>
         <div className="bookTileImageContainer">
           <img src={image} alt={title} className="bookTileImage" />
 
           <div className="bookTileIconDiv">
             <span className="bookTileIcon trash">
-              <button className="icon" onClick={handleClick}>
+              <button className="icon" onClick={(e) => handleClick(e)}>
                 <AiFillDelete />
               </button>
             </span>

@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from "react";
 import BookTile from "./BookTile";
 import ImportBooks from "./ImportBooks";
+import UserModalShowBookDetail from "./UserModalShowBookDetail";
 
-function UserBooksList({ userBooksList, setUserBooksList, user }) {
+function UserBooksList({
+  userBooksList,
+  setUserBooksList,
+  user,
+  setUserClickedBook,
+  userClickedBook,
+}) {
+  function closeUserModal() {
+    setUserClickedBook();
+  }
   // GET all books
   // useEffect(() => {
   //   fetch(`/books`)
@@ -42,6 +52,7 @@ function UserBooksList({ userBooksList, setUserBooksList, user }) {
         book={book}
         userBooksList={userBooksList}
         setUserBooksList={setUserBooksList}
+        setUserClickedBook={setUserClickedBook}
       />
     ));
 
@@ -54,6 +65,7 @@ function UserBooksList({ userBooksList, setUserBooksList, user }) {
         book={book}
         userBooksList={userBooksList}
         setUserBooksList={setUserBooksList}
+        setUserClickedBook={setUserClickedBook}
       />
     ));
 
@@ -66,6 +78,7 @@ function UserBooksList({ userBooksList, setUserBooksList, user }) {
         book={book}
         userBooksList={userBooksList}
         setUserBooksList={setUserBooksList}
+        setUserClickedBook={setUserClickedBook}
       />
     ));
 
@@ -112,6 +125,13 @@ function UserBooksList({ userBooksList, setUserBooksList, user }) {
 
       <h3>Read</h3>
       <div className="userBookCollectionContainer">{userHaveRead}</div>
+
+      {userClickedBook ? (
+        <UserModalShowBookDetail
+          closeUserModal={closeUserModal}
+          userClickedBook={userClickedBook}
+        />
+      ) : null}
 
       <ImportBooks />
     </div>
