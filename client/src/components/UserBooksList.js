@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import BookTile from "./BookTile";
-import Input from "./Input";
+import ImportBooks from "./ImportBooks";
 
 function UserBooksList({ userBooksList, setUserBooksList, user }) {
   // GET all books
@@ -83,24 +83,8 @@ function UserBooksList({ userBooksList, setUserBooksList, user }) {
   // }
 
   return (
-    <>
+    <div className="userBooksListContainer">
       <h2>My Books</h2>
-
-      <Input />
-
-      {/* <Input
-        type="file"
-        ref={(input) => {
-          this.filesInput = input;
-        }}
-        name="file"
-        icon="file text outline"
-        iconPosition="left"
-        label="Upload CSV"
-        labelPosition="right"
-        placeholder="UploadCSV..."
-        onChange={this.handleChange}
-      /> */}
 
       <h3>Currently Reading</h3>
       <div className="userBookCollectionContainer">{userCurrentlyReading}</div>
@@ -110,7 +94,9 @@ function UserBooksList({ userBooksList, setUserBooksList, user }) {
 
       <h3>Read</h3>
       <div className="userBookCollectionContainer">{userHaveRead}</div>
-    </>
+
+      <ImportBooks />
+    </div>
   );
 }
 

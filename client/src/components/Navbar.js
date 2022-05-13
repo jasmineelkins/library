@@ -17,19 +17,18 @@ function Navbar({ user, setUser }) {
   }
   return (
     <div className="navBarContainer">
-      {/* <div className="welcomeMessage">
+      <div className="welcomeMessage">
         {user ? <h3>Hi, {user.name}!</h3> : <span></span>}
-      </div> */}
-      {user ? (
-        <>
-          <Link to="/search">Search</Link>
-          <Link to="/">My Books</Link>
-          <Link to="/profile">Profile</Link>
-          <button onClick={handleLogoutClick} className="btn">
-            Logout
-          </button>
-        </>
-      ) : null}
+      </div>
+
+      <div className="navBarLinks">
+        <Link to="/search">Search</Link>
+        <Link to="/">My Books</Link>
+        <Link to="/profile">Profile</Link>
+        <button onClick={handleLogoutClick} className="btn">
+          Logout
+        </button>
+      </div>
     </div>
   );
 }

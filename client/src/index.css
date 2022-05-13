@@ -26,34 +26,34 @@ button,
   margin: 1em;
   font-size: 0.8rem;
   border: none;
-  background-color: rgb(216, 229, 229);
+  background-color: rgb(188, 225, 223);
 }
 
 button:hover {
-  background: rgb(173, 172, 172);
+  background-color: rgb(120, 183, 180);
 }
 
 button:active {
-  background: rgb(146, 146, 146);
+  background-color: rgb(67, 164, 160);
 }
 
 .pageContainer {
   position: relative;
   min-height: 100vh;
-  margin: 1em;
 }
 
 .contentWrap {
-  padding-bottom: 8rem;
+  padding-bottom: 10rem;
 }
 
 /* NAVBAR ------------------------------------------------------------ */
 .navBarContainer {
   display: flex;
   align-items: center;
-  justify-content: right;
+  justify-content: space-between;
   gap: 15px;
   font-size: 0.8rem;
+  padding: 0 1em;
 }
 
 .navBarContainer a,
@@ -71,6 +71,13 @@ button:active {
 
 .navBarContainer a:visited {
   color: #333;
+}
+
+.navBarLinks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 /* HEADER ------------------------------------------------------------ */
@@ -95,15 +102,11 @@ header h1 {
 }
 
 /* AUTHBAR ------------------------------------------------------------ */
-AuthBar Link {
-  text-decoration: none;
-}
-
 .authBarContainer {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 20px;
   margin: 1em;
 }
 
@@ -118,12 +121,18 @@ AuthBar Link {
 }
 
 .authForm {
+  /* background-color: black; */
+  /* color: white; */
   width: 25vw;
   display: flex;
   flex-direction: column;
   align-items: space-between;
   justify-content: center;
   gap: 20px;
+  padding: 3em;
+  box-shadow: inset 0 0 0 3px black, inset 0 0 0 6px white,
+    inset 0 0 0 9px black;
+  font-weight: bold;
 }
 
 .formRow {
@@ -133,11 +142,17 @@ AuthBar Link {
 
 .formRow label {
   text-align: left;
+  margin-bottom: 0.2em;
+}
+
+.formRow input {
+  padding: 0.5em;
 }
 
 .errorMessage {
   color: tomato;
   font-style: italic;
+  font-weight: normal;
   font-size: smaller;
   text-align: center;
 }
@@ -148,25 +163,61 @@ AuthBar Link {
   justify-content: center;
 }
 
+.formButtonDiv button {
+  font-weight: bold;
+}
+
 /* HOME ------------------------------------------------------------ */
 .homeContainer {
   text-align: center;
   margin: 3em;
 }
 
+.homeGreeting {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -1em;
+}
+
+.homeGreetingInner {
+  box-shadow: inset 0 0 0 5px black, inset 0 0 0 10px white;
+  background-color: black;
+  color: white;
+  padding: 2em 4em;
+  width: 30vw;
+}
+
+.homeContainer h2 {
+  margin: 0.2em;
+  font-size: 1.2rem;
+}
+
+.homeContainer h3 {
+  margin: 1em;
+  font-size: 1.5rem;
+}
+
 /* LIBRARY / HOME  ------------------------------------------------------------ */
 .booksContainer h2 {
   margin-top: 2em;
-  text-align: left;
+  text-align: center;
+  border-bottom: 2px solid black;
 }
 
 /* FOOTER ------------------------------------------------------------ */
 footer {
-  background: var(--header);
+  /* background: url("https://res.cloudinary.com/dbl7owtdh/image/upload/v1652287518/book_eb5yut.jpg"); */
+  background: url("https://res.cloudinary.com/dbl7owtdh/image/upload/v1652411279/pexels-dids-1476243_xj2whr.jpg");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: grayscale(100%);
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 4rem;
+  height: 3rem;
   bottom: 0;
   display: flex;
   align-items: center;
@@ -174,7 +225,29 @@ footer {
   gap: 10px;
   margin-top: 5rem;
   font-size: 14px;
-  color: var(--maroon);
+  color: white;
+  /* font-weight: bold; */
+  letter-spacing: 0.2px;
+}
+
+footer span {
+  background-color: rgba(8, 8, 8, 0.578);
+  padding: 0.5em;
+  width: 100%;
+  text-align: center;
+}
+
+footer a {
+  color: white;
+  margin: 0.3em;
+}
+
+.footerIcon {
+  transition: 1.3s ease all;
+}
+
+.footerIcon:hover {
+  transform: rotate(360deg);
 }
 
 /* LIBRARY BOOK LIST (CONTAINER) ------------------------------------------------------------ */
@@ -200,6 +273,7 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 1em;
 }
 
 .bookSearchContainer input {
@@ -298,7 +372,7 @@ footer {
 
 .icon,
 .bookTileIcon {
-  margin: 0.5em;
+  margin: 0.2em;
   padding: 0.1em;
   border-radius: 100%;
   color: rgb(255, 171, 157);
@@ -312,12 +386,21 @@ footer {
 }
 
 /* USER BOOKS (CONTAINER) ------------------------------------------------------------ */
+.userBooksListContainer {
+  padding: 1em;
+}
+
+.userBooksListContainer h2 {
+  text-align: center;
+  margin: 1em;
+}
+
 .userBookCollectionContainer {
   display: flex;
   padding: 25px 0;
   overflow-y: hidden;
   overflow-x: scroll;
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
 }
 
 .userBookCollectionContainer:hover .bookCard {
@@ -355,6 +438,10 @@ footer {
 .categoryTitle {
   margin: 0;
   padding: 0;
+}
+
+.bookTileIcon {
+  margin: 0.1em;
 }
 
 .bookTileIconDiv {
@@ -540,4 +627,16 @@ footer {
   .profileInnerDiv {
     width: 50vw;
   }
+}
+
+/* IMPORT BOOKS ---------------------------------------------------- */
+.importBooksContainer {
+  margin-top: 3em;
+}
+
+.importBooksContainer {
+  padding: 3em;
+  box-shadow: inset 0 0 0 3px black, inset 0 0 0 6px white,
+    inset 0 0 0 9px black;
+  width: 50vw;
 }

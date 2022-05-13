@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Input(props) {
+function ImportBooks(props) {
   const [file, setFile] = useState();
   const [array, setArray] = useState([]);
 
@@ -56,10 +56,10 @@ function Input(props) {
   }
 
   return (
-    <>
+    <div className="importBooksContainer">
       <h3>Import Books</h3>
 
-      <form onSubmit={(e) => handleUpload(e)}>
+      <form onSubmit={(e) => handleUpload(e)} className="importBooksForm">
         <input
           type={"file"}
           accept={".csv"}
@@ -89,8 +89,8 @@ function Input(props) {
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 }
 
-export default Input;
+export default ImportBooks;

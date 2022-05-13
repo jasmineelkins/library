@@ -4,10 +4,16 @@ import Library from "./Library";
 function GenericHomePage({ setClickedBook, clickedBook }) {
   return (
     <div className="homeContainer">
-      <h1>Welcome!</h1>
-      <h2>Please log in</h2>
+      <div className="homeGreeting">
+        <div className="homeGreetingInner">
+          <h1>Welcome!</h1>
+          <h2>Please log in</h2>
+        </div>
+      </div>
 
-      <Library setClickedBook={setClickedBook} clickedBook={clickedBook}  />
+      <h3>Discover new books:</h3>
+
+      <Library setClickedBook={setClickedBook} clickedBook={clickedBook} />
     </div>
   );
 }
