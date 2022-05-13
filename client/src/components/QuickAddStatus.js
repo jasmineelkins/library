@@ -7,15 +7,18 @@ function QuickAddStatus({ setSelectedStatus }) {
   }
   return (
     <>
-      <select
-        defaultValue="Want to Read"
-        name="status"
-        onChange={(e) => handleOptionSelection(e)}
-      >
-        <option value="Currently Reading">Currently Reading</option>
-        <option value="Want to Read">Want to Read</option>
-        <option value="Read">Read</option>
-      </select>
+      <div class="select-wrapper">
+        <select
+          id="select"
+          defaultValue="Want to Read"
+          name="status"
+          onChange={(e) => handleOptionSelection(e)}
+        >
+          <option value="Currently Reading">Currently Reading</option>
+          <option value="Want to Read">Want to Read</option>
+          <option value="Read">Read</option>
+        </select>
+      </div>
     </>
   );
 }

@@ -366,8 +366,8 @@ footer a {
   text-align: center;
 }
 
-.quickAddContainer select {
-  padding: 1.5em;
+#select {
+  border-right: 10px solid transparent;
 }
 
 /* SEARCHED BOOKCARD ------------------------------------------------------------ */
