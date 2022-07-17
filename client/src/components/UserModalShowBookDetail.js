@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
+import QuickAddStatus from "./QuickAddStatus";
 
 function UserModalShowBookDetail({ userClickedBook, closeUserModal }) {
   const { title, description, author, image } = userClickedBook;
@@ -7,6 +8,10 @@ function UserModalShowBookDetail({ userClickedBook, closeUserModal }) {
   const [showMore, setShowMore] = useState(true);
 
   useEffect(() => {}, [showMore]);
+
+  function updateStatus() {
+    //   fetch PATCH to update book status
+  }
 
   return (
     <>
@@ -25,6 +30,7 @@ function UserModalShowBookDetail({ userClickedBook, closeUserModal }) {
             <div className="bookModalInfo">
               <h1 className="modalTitle">{title}</h1>
               <h3 className="colorModalText"> Author: {author}</h3>
+              <QuickAddStatus />
             </div>
           </div>
 

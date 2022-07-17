@@ -21,7 +21,7 @@ body {
 }
 
 button,
-.quickAddContainer select {
+select {
   font-family: "Jost", sans-serif;
   padding: 1em;
   border-radius: 10px;
@@ -84,11 +84,11 @@ button:active {
 
 /* HEADER ------------------------------------------------------------ */
 header {
-  background: url("https://res.cloudinary.com/dbl7owtdh/image/upload/v1652287518/book_eb5yut.jpg");
+  background: url("https://res.cloudinary.com/dbl7owtdh/image/upload/v1652287518/BookBook/book_eb5yut.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 25vh;
+  height: 15vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -573,13 +573,26 @@ footer a {
   padding: 5px;
 }
 
-.closeIcon {
+/* .closeIcon {
   margin: 0.5em;
   padding: 0.1em;
   border-radius: 100%;
-  color: rgb(255, 171, 157);
   background: none;
   font-size: 1.2em;
+} */
+
+.closeCircleSize {
+  color: rgb(63, 127, 117);
+  margin: 0.2em;
+  padding: 0.1em;
+  border-radius: 100%;
+  background: none;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.closeCircleSize:hover {
+  color: rgb(51, 77, 73);
 }
 
 .closeDiv {

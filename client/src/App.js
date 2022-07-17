@@ -44,8 +44,8 @@ function App() {
         <BrowserRouter>
           {user ? (
             <>
-              <Navbar user={user} setUser={setUser} />
               <Header />
+              <Navbar user={user} setUser={setUser} />
             </>
           ) : (
             <>
