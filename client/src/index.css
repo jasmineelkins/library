@@ -84,11 +84,11 @@ button:active {
 
 /* HEADER ------------------------------------------------------------ */
 header {
-  background: url("https://res.cloudinary.com/dbl7owtdh/image/upload/v1652287518/book_eb5yut.jpg");
+  background: url("https://res.cloudinary.com/dbl7owtdh/image/upload/v1652287518/BookBook/book_eb5yut.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 25vh;
+  height: 15vh;
   display: flex;
   flex-direction: column;
   align-items: center;
