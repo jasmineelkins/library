@@ -15,18 +15,10 @@ function Profile({ user, setUser }) {
   });
 
   useEffect(() => {
-    fetch(`/users/${user.id}`)
-      .then((res) => res.json())
-      .then((currentUserObj) => {
-        // console.log("current user: ", currentUserObj);
-        setUser(currentUserObj);
-        setProfileFormData(defaultProfileForm);
-      })
-      .catch((error) => console.log(error.message));
+    getCurrentUser();
   }, [setUser, user.id]);
 
   function handleClick(e) {
-    // click to toggle form
     setEditModeOff(false);
   }
 
@@ -36,29 +28,9 @@ function Profile({ user, setUser }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-
     // console.log(profileFormData);
 
-    // UPDATE user info
-    fetch(`/users/${user.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        name: profileFormData.name,
-        username: profileFormData.username,
-        about: profileFormData.about,
-      }),
-    })
-      .then((res) => res.json())
-      .then((updatedUserObj) => {
-        // console.log("Updated user: ", updatedUserObj);
-        setUser(updatedUserObj);
-        setProfileFormData(updatedUserObj);
-      })
-      .catch((error) => console.log(error.message));
+    updateUserInfo();
 
     // reset form to show user data
     setProfileFormData({
@@ -67,8 +39,44 @@ function Profile({ user, setUser }) {
       about: profileFormData.about,
     });
 
-    //turn off edit mode - back to profile, not form
     setEditModeOff(true);
+  }
+
+  async function getCurrentUser() {
+    try {
+      const response = await fetch(`/users/${user.id}`);
+      const currentUserObj = await response.json();
+
+      // console.log("current user: ", currentUserObj);
+      setUser(currentUserObj);
+      setProfileFormData(defaultProfileForm);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  async function updateUserInfo() {
+    try {
+      const response = await fetch(`/users/${user.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: profileFormData.name,
+          username: profileFormData.username,
+          about: profileFormData.about,
+        }),
+      });
+      const updatedUserObj = await response.json();
+
+      // console.log("Updated user: ", updatedUserObj);
+      setUser(updatedUserObj);
+      setProfileFormData(updatedUserObj);
+    } catch (error) {
+      console.log("ERROR: ", error.message);
+    }
   }
 
   return (

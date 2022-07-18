@@ -40,21 +40,26 @@ function BookTile({
     e.stopPropagation();
 
     const { id } = book;
-    fetch(`/books/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("DELETED", data);
-        console.log("UBL", userBooksList);
-        const userBooksMinusDeleted = userBooksList.filter(
-          (book) => book.id !== id
-        );
+    deleteBookFromLibrary(id);
+  }
 
-        console.log(userBooksMinusDeleted);
-        setUserBooksList(userBooksMinusDeleted);
-      })
-      .catch((error) => console.log(error.message));
+  async function deleteBookFromLibrary(id) {
+    try {
+      const response = await fetch(`/books/${id}`, {
+        method: "DELETE",
+      });
+      const data = await response.json();
+      console.log("DELETED", data);
+      console.log("UBL", userBooksList);
+      const userBooksMinusDeleted = userBooksList.filter(
+        (book) => book.id !== id
+      );
+
+      console.log(userBooksMinusDeleted);
+      setUserBooksList(userBooksMinusDeleted);
+    } catch (error) {
+      console.log("ERROR: ", error.message);
+    }
   }
 
   return (

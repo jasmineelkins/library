@@ -26,17 +26,23 @@ function App() {
 
   // AUTO LOGIN
   useEffect(() => {
-    fetch(`/me`)
-      .then((res) => res.json())
-      .then((userObj) => {
-        console.log("logged in", userObj);
-
-        if (userObj.username) {
-          setUser(userObj);
-        }
-      })
-      .catch((error) => console.log(error.message));
+    getUser();
   }, []);
+
+  async function getUser() {
+    try {
+      const response = await fetch(`/me`);
+      const userObj = await response.json();
+
+      console.log("logged in", userObj);
+
+      if (userObj.username) {
+        setUser(userObj);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
   return (
     <div className="pageContainer">

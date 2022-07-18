@@ -30,14 +30,20 @@ function UserBooksList({
 
   // GET all books for logged in user, regardless of status
   useEffect(() => {
-    fetch(`/users/${user.id}/books`)
-      .then((res) => res.json())
-      .then((listOfUserBooks) => {
-        console.log("User's Book List: ", listOfUserBooks);
-        setUserBooksList(listOfUserBooks);
-      })
-      .catch((error) => console.log(error.message));
+    getUserBooks();
   }, [user.id, setUserBooksList]);
+
+  async function getUserBooks() {
+    try {
+      const response = await fetch(`/users/${user.id}/books`);
+      const listOfUserBooks = await response.json();
+
+      console.log("User's Book List: ", listOfUserBooks);
+      setUserBooksList(listOfUserBooks);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
   // const allUserBooks = userBooksList.map((book) => {
   //   return <BookTile key={book.id} book={book} />;

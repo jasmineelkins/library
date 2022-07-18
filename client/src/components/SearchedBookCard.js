@@ -25,59 +25,67 @@ function SearchedBookCard({
     const { title, description, pageCount } = APIbook.volumeInfo;
     const [authors] = APIbook.volumeInfo.authors;
 
-    // UBL is empty because it renders only on My Books component..not Search
+    // URL is empty because it renders only on My Books component..not Search
     console.log("User Book List before adding new APIbook: ", userBooksList);
 
-    fetch(`/books`, {
-      // adds book to User Booklist
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        title: title,
-        author: authors,
-        image: APIbook.volumeInfo.imageLinks.thumbnail,
-        description: description,
-        genre: "",
-        pages: pageCount,
-      }),
-    })
-      .then((res) => res.json())
-      .then((bookObj) => {
-        console.log("Added book: ", bookObj);
-        createBookReview(bookObj);
-      })
-      .catch((error) => console.log(error.message));
+    createNewBook(title, description, pageCount, authors);
   }
 
-  function createBookReview(bookObj) {
-    fetch(`reviews`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        content: `Associating ${bookObj.title} to user: ${user.name}`,
-        rating: null,
-        book_id: bookObj.id,
-        user_id: user.id,
-        status: selectedStatus,
-      }),
-    })
-      .then((res) => res.json())
-      .then((reviewObj) => {
-        console.log("Review: ", reviewObj);
+  async function createNewBook(title, description, pageCount, authors) {
+    // adds book to User Booklist
 
-        // triggers Toast with book title and shelf info
-        onBookAdded(bookObj.title);
+    // TODO: I think this URL is wrong
+    try {
+      const response = await fetch(`/books`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: title,
+          author: authors,
+          image: APIbook.volumeInfo.imageLinks.thumbnail,
+          description: description,
+          genre: "",
+          pages: pageCount,
+        }),
+      });
+      const bookObj = await response.json();
 
-        setUserBooksList([...userBooksList, bookObj]);
-        // console.log("AFTER ADDING BOOK TO USER BOOK LIST", userBooksList);
-      })
-      .catch((error) => console.log(error.message));
+      console.log("Added book: ", bookObj);
+      createBookReview(bookObj);
+    } catch (error) {
+      console.log("ERROR: ", error.message);
+    }
+  }
+
+  async function createBookReview(bookObj) {
+    try {
+      const response = await fetch(`/reviews`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          content: `Associating ${bookObj.title} to user: ${user.name}`,
+          rating: null,
+          book_id: bookObj.id,
+          user_id: user.id,
+          status: selectedStatus,
+        }),
+      });
+      const reviewObj = await response.json();
+
+      console.log("Review: ", reviewObj);
+
+      // triggers Toast with book title and shelf info
+      onBookAdded(bookObj.title);
+
+      setUserBooksList([...userBooksList, bookObj]);
+      // console.log("AFTER ADDING BOOK TO USER BOOK LIST", userBooksList);
+    } catch (error) {
+      console.log("ERROR: ", error.message);
+    }
   }
 
   return (

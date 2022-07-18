@@ -7,14 +7,24 @@ function Navbar({ user, setUser }) {
 
   function handleLogoutClick() {
     //   log out user by deleting session
-    fetch("/logout", { method: "DELETE" }).then((r) => {
-      if (r.ok) {
+    deleteUserSession();
+  }
+
+  async function deleteUserSession() {
+    try {
+      const response = await fetch(`/logout`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
         setUser(null);
-        console.log(r);
+        console.log(response);
       }
       navigate("/");
-    });
+    } catch (error) {
+      console.log("ERROR: ", error.message);
+    }
   }
+
   return (
     <div className="navBarContainer">
       <div className="welcomeMessage">

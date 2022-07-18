@@ -24,31 +24,42 @@ function BookSearch({
 
   // on component load fetch User's books & update User Books List
   useEffect(() => {
-    fetch(`/users/${user.id}/books`)
-      .then((res) => res.json())
-      .then((listOfUserBooks) => {
-        console.log("User's Book List: ", listOfUserBooks);
-        setUserBooksList(listOfUserBooks);
-      })
-      .catch((error) => console.log(error.message));
+    getUserBooks();
   }, []);
+
+  async function getUserBooks() {
+    try {
+      const response = await fetch(`/users/${user.id}/books`);
+      const listOfUserBooks = await response.json();
+
+      console.log("User's Book List: ", listOfUserBooks);
+      setUserBooksList(listOfUserBooks);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
 
     // fetch books from API matching search by title
-    fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=intitle:${userInput}&maxResults=20`
-    )
-      .then((res) => res.json())
-      .then((objectContainingVolumesArray) => {
-        console.log("API search results: ", objectContainingVolumesArray.items);
-        setBookList(objectContainingVolumesArray.items);
-        setSearchSubmitted(true);
-      })
-      .catch((error) => console.log(error.message));
-
+    getSearchResults();
     setUserInput("");
+  }
+
+  async function getSearchResults() {
+    try {
+      const response = await fetch(
+        `https://www.googleapis.com/books/v1/volumes?q=intitle:${userInput}&maxResults=20`
+      );
+      const objectContainingVolumesArray = await response.json();
+
+      console.log("API search results: ", objectContainingVolumesArray.items);
+      setBookList(objectContainingVolumesArray.items);
+      setSearchSubmitted(true);
+    } catch (error) {
+      console.log(error.message);
+    }
   }
   return (
     <div className="bookSearchContainer">

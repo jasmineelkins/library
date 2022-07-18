@@ -21,10 +21,14 @@ TO-DO LIST:
 - _DONE_ only login OR signup is showing
 - _DONE_ user can add books to shelf
 - _DONE_ only show Home page if user logged in
+- rewrite all fetch to async/await **done except for Library/Home Page genre collections..workng this on a branch**
+- restructure/rename for clarity?
+- create & import BASE_URL
 
 LITTLE DETAILS TO FIX....
 
 - clear book search results in between page loads?
+- book search results should also have modals
 - home page: signup/login. clicking signup pops up form - modal maybe ?
 - _DONE_ 'passwords don't match' better error message
 - _DONE_ add a Profile & link to NavBar

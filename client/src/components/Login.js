@@ -14,6 +14,8 @@ function Login({ user, setUser }) {
   const passwordShownIcon =
     passwordShown === true ? <AiFillEye /> : <AiFillEyeInvisible />;
 
+  const errorsToDisplay = error === null ? null : error;
+
   function togglePassword(e) {
     e.preventDefault();
     setPasswordShown(!passwordShown);
@@ -28,44 +30,44 @@ function Login({ user, setUser }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    createUserSession();
 
-    // POST request: log in user by creating a session
-    fetch(`/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        username: formData.username,
-        password: formData.password,
-      }),
-    })
-      .then((res) => res.json())
-      .then((userObj) => {
-        console.log("Logged in user: ", userObj);
-
-        if (userObj.username) {
-          navigate("/");
-          setUser(userObj);
-          setError(null);
-        } else {
-          if (userObj.error) {
-            setError(userObj.error.login);
-          } else {
-            setError(null);
-          }
-
-          setUser(null);
-        }
-      })
-      .catch((error) => console.log(error.message));
-
-    // reset form
     setFormData(defaultFormState);
   }
 
-  const errorsToDisplay = error === null ? null : error;
+  async function createUserSession() {
+    try {
+      const response = await fetch(`/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+      const userObj = await response.json();
+
+      console.log("Logged in user: ", userObj);
+
+      if (userObj.username) {
+        navigate("/");
+        setUser(userObj);
+        setError(null);
+      } else {
+        if (userObj.error) {
+          setError(userObj.error.login);
+        } else {
+          setError(null);
+        }
+
+        setUser(null);
+      }
+    } catch (error) {
+      console.log("ERROR: ", error.message);
+    }
+  }
 
   return (
     <div className="authFormContainer">
