@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import BookTile from "./BookTile";
+import UserBookTile from "./UserBookTile";
 import ImportBooks from "./ImportBooks";
 import UserModalShowBookDetail from "./UserModalShowBookDetail";
 
@@ -25,7 +25,7 @@ function UserBooksList({
   // }, [setUserBooksList]);
 
   // const userBooksToDisplay = userBooksList.map((book) => {
-  //   return <BookTile key={book.id} book={book} />;
+  //   return <UserBookTile key={book.id} book={book} />;
   // });
 
   // GET all books for logged in user, regardless of status
@@ -46,14 +46,14 @@ function UserBooksList({
   }
 
   // const allUserBooks = userBooksList.map((book) => {
-  //   return <BookTile key={book.id} book={book} />;
+  //   return <UserBookTile key={book.id} book={book} />;
   // });
 
   // render user's Currently Reading
   const userCurrentlyReading = userBooksList
     .filter((book) => book.reviews[0]?.status === "Currently Reading")
     .map((book) => (
-      <BookTile
+      <UserBookTile
         key={book.id}
         book={book}
         userBooksList={userBooksList}
@@ -66,7 +66,7 @@ function UserBooksList({
   const userWantToRead = userBooksList
     .filter((book) => book.reviews[0]?.status === "Want to Read")
     .map((book) => (
-      <BookTile
+      <UserBookTile
         key={book.id}
         book={book}
         userBooksList={userBooksList}
@@ -79,7 +79,7 @@ function UserBooksList({
   const userHaveRead = userBooksList
     .filter((book) => book.reviews[0]?.status === "Read")
     .map((book) => (
-      <BookTile
+      <UserBookTile
         key={book.id}
         book={book}
         userBooksList={userBooksList}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import UserBooksList from "./UserBooksList";
+// import UserBooksList from "./UserBooksList";
 // import { AiFillStar, AiOutlinePlus } from "react-icons/ai";
 import {
   FaHeart,
@@ -11,7 +11,7 @@ import {
   FaRegBookmark,
 } from "react-icons/fa";
 
-function SearchedBookCard({
+function BookSearchTile({
   APIbook,
   setUserBooksList,
   userBooksList,
@@ -90,7 +90,7 @@ function SearchedBookCard({
 
   return (
     <>
-      <div className="searchedBookCard">
+      <div className="bookSearchTileContainer">
         {APIbook.volumeInfo.imageLinks === undefined ? (
           <span>undefined image links</span>
         ) : (
@@ -117,4 +117,4 @@ function SearchedBookCard({
   );
 }
 
-export default SearchedBookCard;
+export default BookSearchTile;

@@ -326,7 +326,7 @@ header h1 {
 }
 
 /* SEARCHED BOOKCARD ------------------------------------------------------------------------------------------ */
-.searchedBookCard {
+.bookSearchTileContainer {
   background: black;
   flex: 0 0 19.7%;
   text-align: center;
@@ -338,7 +338,7 @@ header h1 {
   position: relative;
 }
 
-.searchedBookCard:hover {
+.bookSearchTileContainer:hover {
   filter: brightness(70%);
 }
 
@@ -352,7 +352,7 @@ header h1 {
 }
 
 .searchedBookButtonDiv,
-.bookTileIconDiv {
+.userBookTileIconDiv {
   display: flex;
   justify-content: right;
   width: 100%;
@@ -363,7 +363,7 @@ header h1 {
 }
 
 .icon,
-.bookTileIcon {
+.userBookTileIcon {
   margin: 0.2em;
   padding: 0.1em;
   border-radius: 100%;
@@ -421,7 +421,7 @@ header h1 {
   display: none;
 }
 
-.bookTile {
+.userBookTile {
   background: black;
   flex: 0 0 19.7%;
   text-align: center;
@@ -432,31 +432,31 @@ header h1 {
   position: relative;
 }
 
-.bookTile:hover ~ .bookTile {
+.userBookTile:hover ~ .userBookTile {
   transform: translateX(25%);
 }
 
-.bookTile:hover {
+.userBookTile:hover {
   transform: scale(1.3) !important;
 }
 
-.bookTileImage {
+.userBookTileImage {
   width: 8rem;
   height: 12rem;
 }
 
-.bookTileIcon {
+.userBookTileIcon {
   margin: 0.1em;
 }
 
-.bookTileIconDiv {
+.userBookTileIconDiv {
   /* background: none; */
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.bookTileIcon.trash {
+.userBookTileIcon.trash {
   color: tomato;
 }
 

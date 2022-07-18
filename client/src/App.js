@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import AuthBar from "./components/AuthBar";
-import GenericHomePage from "./components/GenericHomePage";
+import HomePage from "./components/HomePage";
 import BookSearch from "./components/BookSearch";
 import UserBooksList from "./components/UserBooksList";
 import BookSearchResults from "./components/BookSearchResults";
@@ -114,7 +114,7 @@ function App() {
                 <Route
                   path="/"
                   element={
-                    <GenericHomePage
+                    <HomePage
                       setClickedBook={setClickedBook}
                       clickedBook={clickedBook}
                     />

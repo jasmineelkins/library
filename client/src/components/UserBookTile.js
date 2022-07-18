@@ -12,7 +12,7 @@ import {
 import { MdRemoveCircle } from "react-icons/md";
 import { AiFillDelete } from "react-icons/ai";
 
-function BookTile({
+function UserBookTile({
   book,
   userBooksList,
   setUserBooksList,
@@ -64,17 +64,17 @@ function BookTile({
 
   return (
     <>
-      <div className="bookTile" onClick={displayBookDetails}>
-        <div className="bookTileImageContainer">
-          <img src={image} alt={title} className="bookTileImage" />
+      <div className="userBookTile" onClick={displayBookDetails}>
+        <div className="userBookTileImageContainer">
+          <img src={image} alt={title} className="userBookTileImage" />
 
-          <div className="bookTileIconDiv">
-            <span className="bookTileIcon trash">
+          <div className="userBookTileIconDiv">
+            <span className="userBookTileIcon trash">
               <button className="icon" onClick={(e) => handleClick(e)}>
                 <AiFillDelete />
               </button>
             </span>
-            <span className="bookTileIcon status">{bookStatusIcon}</span>
+            <span className="userBookTileIcon status">{bookStatusIcon}</span>
           </div>
         </div>
       </div>
@@ -82,4 +82,4 @@ function BookTile({
   );
 }
 
-export default BookTile;
+export default UserBookTile;

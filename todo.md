@@ -41,6 +41,8 @@ STRETCH GOALS:
 - user can submit an actual review & rating
 - user can import goodreads data
 - recommendations based on genre
+- user can click on book from home screen & save it once they log in
+- can also browse library when they're logged in
 - user can add custom-named shelves
 - pagination - show 10 results from API, click next to see 10 more
 - import top bestseller's list & generate collection on home page

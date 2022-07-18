@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import SearchedBookCard from "./SearchedBookCard";
+import React from "react";
+import BookSearchTile from "./BookSearchTile";
 
 function BookSearchResults({
   bookList,
@@ -16,7 +16,7 @@ function BookSearchResults({
   const booksToDisplay = onlyBooksWithImages.map((APIbook) => {
     // console.log("each API book author: ", APIbook.volumeInfo.authors);
     return (
-      <SearchedBookCard
+      <BookSearchTile
         key={APIbook.etag}
         APIbook={APIbook}
         setUserBooksList={setUserBooksList}

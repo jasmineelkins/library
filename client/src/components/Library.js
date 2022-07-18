@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import BookList from "./BookList";
+// import BookList from "./BookList";
 import Row from "./Row";
 
 function Library({ clickedBook, setClickedBook }) {
@@ -16,7 +16,7 @@ function Library({ clickedBook, setClickedBook }) {
   //   GET list of books by subject
   //   https://www.googleapis.com/books/v1/volumes?q=subject:fiction
 
-  //SEARCH FUNCTION - THIS WON'T RENDER UNTIL THERE'S A USER INPUT
+  // SEARCH FUNCTION - THIS WON'T RENDER UNTIL THERE'S A USER INPUT
   // function handleSubmit(e) {
   //   e.preventDefault();
 
