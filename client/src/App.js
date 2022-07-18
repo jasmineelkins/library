@@ -10,7 +10,7 @@ import AuthBar from "./components/AuthBar";
 import HomePage from "./components/HomePage";
 import BookSearch from "./components/BookSearch";
 import UserBooksList from "./components/UserBooksList";
-import BookSearchResults from "./components/BookSearchResults";
+// import BookSearchResults from "./components/BookSearchResults";
 import Profile from "./components/Profile";
 
 function App() {
@@ -108,6 +108,17 @@ function App() {
                   path="/profile"
                   element={<Profile user={user} setUser={setUser} />}
                 ></Route>
+
+                <Route
+                  path="/browse"
+                  element={
+                    <HomePage
+                      setClickedBook={setClickedBook}
+                      clickedBook={clickedBook}
+                      user={user}
+                    />
+                  }
+                ></Route>
               </>
             ) : (
               <>
@@ -117,6 +128,7 @@ function App() {
                     <HomePage
                       setClickedBook={setClickedBook}
                       clickedBook={clickedBook}
+                      user={user}
                     />
                   }
                 ></Route>

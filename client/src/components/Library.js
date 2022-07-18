@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 // import BookList from "./BookList";
 import Row from "./Row";
 
-function Library({ clickedBook, setClickedBook }) {
+function Library({ clickedBook, setClickedBook, user }) {
   // const [userInput, setUserInput] = useState("");
   // const [bookList, setBookList] = useState([]);
   const [fictionList, setFictionList] = useState([]);
@@ -110,12 +110,15 @@ function Library({ clickedBook, setClickedBook }) {
           fetchedBooks={fictionList}
           clickedBook={clickedBook}
           setClickedBook={setClickedBook}
+          user={user}
         ></Row>
+
         <Row
           categoryTitle="History"
           fetchedBooks={historyList}
           clickedBook={clickedBook}
           setClickedBook={setClickedBook}
+          user={user}
         ></Row>
 
         <Row
@@ -123,6 +126,7 @@ function Library({ clickedBook, setClickedBook }) {
           fetchedBooks={nonfictionList}
           clickedBook={clickedBook}
           setClickedBook={setClickedBook}
+          user={user}
         ></Row>
 
         <Row
@@ -130,6 +134,7 @@ function Library({ clickedBook, setClickedBook }) {
           fetchedBooks={cookBookList}
           clickedBook={clickedBook}
           setClickedBook={setClickedBook}
+          user={user}
         ></Row>
 
         <Row
@@ -137,6 +142,7 @@ function Library({ clickedBook, setClickedBook }) {
           fetchedBooks={childrenBookList}
           clickedBook={clickedBook}
           setClickedBook={setClickedBook}
+          user={user}
         ></Row>
 
         <Row
@@ -144,6 +150,7 @@ function Library({ clickedBook, setClickedBook }) {
           fetchedBooks={scienceFictionList}
           clickedBook={clickedBook}
           setClickedBook={setClickedBook}
+          user={user}
         ></Row>
       </div>
     </>

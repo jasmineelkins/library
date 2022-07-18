@@ -27,7 +27,6 @@ TO-DO LIST:
 
 LITTLE DETAILS TO FIX....
 
-- clear book search results in between page loads?
 - book search results should also have modals
 - home page: signup/login. clicking signup pops up form - modal maybe ?
 - _DONE_ 'passwords don't match' better error message

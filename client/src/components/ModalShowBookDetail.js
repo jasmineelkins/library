@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 
-function ModalShowBookDetail({ clickedBook, closeModal }) {
+function ModalShowBookDetail({ clickedBook, closeModal, user }) {
   const { title, description, authors, publisher } = clickedBook.volumeInfo;
 
   const [showMore, setShowMore] = useState(true);
@@ -32,18 +32,21 @@ function ModalShowBookDetail({ clickedBook, closeModal }) {
                 <h1 className="modalTitle">{title}</h1>
                 <h3 className="colorModalText"> Author: {authors}</h3>
                 <p className="colorModalText"> Publisher: {publisher}</p>
+                {user ? <button>Add to collection</button> : null}
               </div>
             </div>
           )}
           <div className="descriptionModalContainer">
             <p className="descriptionText">
-              {showMore ? `${description.substring(0, 500)}` : `${description}`}
+              {showMore
+                ? `${description.substring(0, 500)}...`
+                : `${description}`}
             </p>
             <button
               className="showMoreButton"
               onClick={() => setShowMore(!showMore)}
             >
-              {showMore ? "...Read More" : "Show Less"}
+              {showMore ? "Read More" : "Show Less"}
             </button>
           </div>
         </div>

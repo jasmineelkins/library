@@ -534,9 +534,13 @@ header h1 {
   opacity: 0.4;
 }
 
+h3.colorModalText {
+  margin: 0;
+}
+
 .colorModalText {
   color: white;
-  padding: 5px;
+  padding: 0;
 }
 
 /* .closeIcon {
@@ -588,6 +592,10 @@ header h1 {
 .modalTitle {
   color: white;
   padding: 10px;
+}
+
+.bookModalInfo button {
+  margin-top: 15px;
 }
 
 .descriptionModalContainer {

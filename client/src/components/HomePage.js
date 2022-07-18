@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Library from "./Library";
 
-function GenericHomePage({ setClickedBook, clickedBook }) {
+function GenericHomePage({ setClickedBook, clickedBook, user }) {
   return (
     <div className="homeContainer">
       <div className="homeGreeting">
@@ -13,7 +13,11 @@ function GenericHomePage({ setClickedBook, clickedBook }) {
 
       <h3>Discover new books:</h3>
 
-      <Library setClickedBook={setClickedBook} clickedBook={clickedBook} />
+      <Library
+        setClickedBook={setClickedBook}
+        clickedBook={clickedBook}
+        user={user}
+      />
     </div>
   );
 }

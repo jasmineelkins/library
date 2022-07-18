@@ -3,7 +3,13 @@ import RowCard from "./RowCard";
 import ModalShowBookDetail from "./ModalShowBookDetail";
 import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from "react-icons/ai";
 
-function Row({ fetchedBooks, categoryTitle, setClickedBook, clickedBook }) {
+function Row({
+  fetchedBooks,
+  categoryTitle,
+  setClickedBook,
+  clickedBook,
+  user,
+}) {
   const scroll = useRef();
 
   function closeModal() {
@@ -46,6 +52,7 @@ function Row({ fetchedBooks, categoryTitle, setClickedBook, clickedBook }) {
         <ModalShowBookDetail
           closeModal={closeModal}
           clickedBook={clickedBook}
+          user={user}
         />
       ) : null}
     </>

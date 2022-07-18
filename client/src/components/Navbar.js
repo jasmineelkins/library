@@ -33,6 +33,7 @@ function Navbar({ user, setUser }) {
 
       <div className="navBarLinks">
         <Link to="/search">Search</Link>
+        <Link to="/browse">Browse</Link>
         <Link to="/">My Books</Link>
         <Link to="/profile">Profile</Link>
         <button onClick={handleLogoutClick} className="btn">
